@@ -3,33 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Land feiten</title>
+  <title>Willekeurige Landenfeiten</title>
   <style>
-    body {font-family: Arial, sans-serif; background:#121212; color:#f5f5f5; text-align:center; padding:20px; display:flex; flex-direction:column; min-height:100vh;}
-    h1 {font-size:2.5rem; margin-bottom:15px;}
-    .controls {display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:15px;}
-    .buttons button, select {margin:8px; padding:10px 18px; border:none; border-radius:12px; cursor:pointer; font-size:1rem; transition:all 0.25s ease; background:#333; color:#fff;}
-    .buttons button:hover, select:hover {transform:scale(1.05); background:#444;}
-    .buttons button.active {background:#ff9800; color:#000; box-shadow:0 0 12px #ff9800;}
-    .fact {margin:14px auto; padding:14px; background:#1e1e1e; border-radius:12px; max-width:800px; font-size:1.1rem; opacity:0; transform:scale(0.95); animation:popIn 0.4s forwards; line-height:1.45; display:flex; justify-content:space-between; align-items:center; gap:10px;}
-    .fact button {margin-left:10px; background:none; border:none; color:#ff9800; font-size:1.4rem; cursor:pointer; transition:transform 0.2s ease;}
-    .fact button:hover {transform:scale(1.3); color:#ffc107;}
-    @keyframes popIn {to {opacity:1; transform:scale(1);}}
-    #favorites {margin-top:40px; text-align:left; max-width:820px; margin-left:auto; margin-right:auto;}
-    #favorites h2 {font-size:1.8rem; margin-bottom:10px; text-align:center;}
-    #favorites button.export {display:block; margin:10px auto 20px; padding:8px 14px; background:#444; border:none; border-radius:8px; cursor:pointer; color:#fff; transition:all 0.2s ease;}
-    #favorites button.export:hover {background:#666; transform:scale(1.05);}
-    .favorite {background:#2a2a2a; margin:8px 0; padding:10px; border-radius:10px; display:flex; justify-content:space-between; align-items:center;}
-    .favorite button {background:none; border:none; color:#ff4d4d; font-size:1.2rem; cursor:pointer; transition:transform 0.2s ease;}
-    .favorite button:hover {transform:scale(1.2); color:#ff6666;}
-    footer {margin-top:auto; padding:15px; font-size:0.9rem; color:#aaa; text-align:center;}
-    footer a {color:#ff9800; text-decoration:none; transition:color 0.2s ease;}
-    footer a:hover {color:#ffc107;}
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #f5f5f5;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .buttons button, select {
+      margin: 8px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      background: #333;
+      color: #fff;
+    }
+    .buttons button:hover, select:hover {
+      transform: scale(1.05);
+      background: #444;
+    }
+    .buttons button.active {
+      background: #ff9800;
+      color: #000;
+      box-shadow: 0 0 12px #ff9800;
+    }
+    .fact {
+      margin: 14px auto;
+      padding: 14px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      max-width: 800px;
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: popIn 0.4s forwards;
+      line-height: 1.45;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .fact button {
+      margin-left: 10px;
+      background: none;
+      border: none;
+      color: #ff9800;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .fact button:hover {
+      transform: scale(1.3);
+      color: #ffc107;
+    }
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    footer {
+      margin-top: auto;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #aaa;
+      text-align: center;
+    }
+    footer a {
+      color: #ff9800;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    footer a:hover {
+      color: #ffc107;
+    }
   </style>
 </head>
 <body>
   <h1>🌍 Willekeurige Landenfeiten</h1>
-
   <div class="controls">
     <div class="buttons">
       <button id="oneFact">1 Feit</button>
@@ -38,17 +108,17 @@
     </div>
     <select id="categoryFilter">
       <option value="All">Alle Landen</option>
+      <option value="Mortal Kombat">Mortal Kombat</option>
+      <option value="Twilight">Twilight</option>
+      <option value="Countries">Countries</option>
     </select>
   </div>
-
   <div id="factContainer"></div>
-
   <div id="favorites">
     <h2>⭐ Favoriete Feiten</h2>
     <button class="export" id="exportFavorites">📂 Favorieten Exporteren</button>
     <div id="favoriteList"></div>
   </div>
-
   <footer>
     <p>Alleen geverifieerde landenfeiten.</p>
   </footer>
@@ -62,579 +132,132 @@
     const favoriteList = document.getElementById('favoriteList');
     const exportBtn = document.getElementById('exportFavorites');
 
-const facts = [
-  // Griekenland
-  {category:"Griekenland", nl:"Griekenland heeft meer dan 6.000 eilanden, waarvan er ongeveer 227 bewoond zijn."},
-  {category:"Griekenland", nl:"Athene is de oudste stad van Europa, met een geschiedenis die meer dan 3.400 jaar teruggaat."},
-  {category:"Griekenland", nl:"De beroemde Griekse filosofen Socrates, Plato en Aristoteles kwamen uit Griekenland."},
-  {category:"Griekenland", nl:"De Olympische Spelen zijn in Griekenland ontstaan, met de eerste spelen in 776 v.Chr."},
-  {category:"Griekenland", nl:"Het Parthenon in Athene is een van de beroemdste monumenten van de klassieke oudheid."},
-  {category:"Griekenland", nl:"Griekenland heeft 18 UNESCO Werelderfgoederen, waaronder de stad Delphi en de tempels van Olympia."},
-  {category:"Griekenland", nl:"De Griekse keuken staat wereldwijd bekend, met gerechten zoals moussaka, souvlaki en tzatziki."},
-  {category:"Griekenland", nl:"Griekenland is de geboorteplaats van de democratie, geïnitieerd door de stadstaat Athene."},
-  {category:"Griekenland", nl:"De Griekse mythologie is een belangrijk cultureel erfgoed, met goden zoals Zeus en Athena."},
-  {category:"Griekenland", nl:"De Grieken waren pioniers in wiskunde, astronomie en geneeskunde."},
-  {category:"Griekenland", nl:"Santorini is beroemd om zijn witte gebouwen met blauwe daken en prachtige zonsondergangen."},
-  {category:"Griekenland", nl:"De Grieken ontwikkelden het theater, met beroemde toneelschrijvers zoals Sophocles en Aristophanes."},
-  {category:"Griekenland", nl:"In Griekenland bevindt zich het oudste wetenschapsmuseum ter wereld: het National Archaeological Museum in Athene."},
-  {category:"Griekenland", nl:"De Grieken eilanden in de Egeïsche Zee trekken jaarlijks miljoenen toeristen."},
-  {category:"Griekenland", nl:"Griekenland heeft de langste kustlijn van Europa, met meer dan 13.000 kilometer."},
-  {category:"Griekenland", nl:"De stad Thessaloniki heeft een rijke geschiedenis, van de tijd van Alexander de Grote."},
-  {category:"Griekenland", nl:"Griekenland is de grootste wijnproducent van de Balkan en heeft meer dan 300 inheemse druivensoorten."},
-  {category:"Griekenland", nl:"De Griekse taal is een van de oudste talen die nog steeds in gebruik zijn."},
-  {category:"Griekenland", nl:"De Grieken ontwikkelden een van de eerste vormen van democratisch bestuur."},
-  {category:"Griekenland", nl:"Griekenland heeft een van de oudste en grootste keukens ter wereld."},
-  {category:"Griekenland", nl:"De Grieken hadden een belangrijke invloed op de westerse filosofie, politiek en wetenschap."},
-  {category:"Griekenland", nl:"Het eiland Kreta was het centrum van de Minoïsche beschaving, de eerste geavanceerde beschaving in Europa."},
-  {category:"Griekenland", nl:"In Griekenland is het klimaat mediterraan, met warme zomers en milde, regenachtige winters."},
-  {category:"Griekenland", nl:"De Griekse god Apollo werd vereerd als de god van muziek, poëzie en genezing."},
-  {category:"Griekenland", nl:"In Griekenland kun je veel oude ruïnes en tempels bezoeken, waaronder die van de oude stad Sparta."},
-  {category:"Griekenland", nl:"Het eiland Rhodos is beroemd om zijn middeleeuwse stad en het oude wonder van de wereld, de Kolos van Rhodos."},
-  {category:"Griekenland", nl:"Griekenland heeft meer dan 100 nationale parken, waaronder het Vikos-Aoos Gorge National Park."},
-  {category:"Griekenland", nl:"De stad Rhodos herbergt de overblijfselen van de antieke Kolos van Rhodos, een van de zeven wereldwonderen."},
-  {category:"Berlijn", nl:"Berlijn is de hoofdstad van Duitsland en een van de grootste steden van het land."},
-{category:"Berlijn", nl:"De Berlijnse Muur, die Duitsland van 1961 tot 1989 verdeelde, is een van de meest iconische monumenten van de Koude Oorlog."},
-{category:"Berlijn", nl:"De Brandenburger Tor is een van de meest beroemde monumenten in Berlijn en symboliseert de hereniging van Duitsland."},
-{category:"Berlijn", nl:"Berlijn heeft meer dan 170 musea, waaronder het Pergamonmuseum, dat beroemde archeologische artefacten herbergt."},
-{category:"Berlijn", nl:"Berlijn heeft de grootste dierentuin van Europa, de Zoologischer Garten Berlin."},
-{category:"Berlijn", nl:"Het Berlijnse nachtleven is wereldberoemd, met tal van clubs en bars die het hele weekend open zijn."},
-{category:"Berlijn", nl:"Berlijn is een centrum voor kunst, cultuur en mode, met vele galeries en creatieve evenementen."},
-{category:"Berlijn", nl:"De Reichstag, het parlementsgebouw van Duitsland, heeft een glazen koepel die open is voor het publiek."},
-{category:"Berlijn", nl:"De Alexanderplatz is een van de bekendste pleinen in Berlijn, met de beroemde tv-toren (Berliner Fernsehturm) als een belangrijk herkenningspunt."},
-{category:"Berlijn", nl:"Berlijn is een groene stad, met meer dan 2.500 parken en tuinen, waaronder het Tiergarten-park."},
-{category:"Berlijn", nl:"Het East Side Gallery is het langste overgebleven stuk van de Berlijnse Muur, dat is omgevormd tot een openluchtgalerij."},
-{category:"Berlijn", nl:"De stad heeft het grootste museumdistrict van Europa, dat op de Werelderfgoedlijst van UNESCO staat."},
-{category:"Berlijn", nl:"Berlijn is een van de meest multiculturele steden in Europa, met een rijke geschiedenis van immigratie."},
-{category:"Berlijn", nl:"De Berliner Dom (Berlijnse Dom) is een indrukwekkende protestantse kathedraal die vaak wordt beschouwd als een van de mooiste gebouwen in de stad."},
-{category:"Berlijn", nl:"Berlijn heeft een van de grootste kerstmarkten van Europa, die jaarlijks duizenden bezoekers trekt."},
-{category:"Berlijn", nl:"Berlijn is de thuisbasis van de jaarlijkse Berlinale, een van de grootste filmfestivals ter wereld."},
-{category:"Berlijn", nl:"Het Museuminsel (Museumeiland) is een van de belangrijkste culturele centra van de stad, met vijf beroemde musea."},
-{category:"Berlijn", nl:"Berlijn heeft het grootste openluchtfilmfestival van Duitsland, de Freiluftkino Friedrichshain."},
-{category:"Berlijn", nl:"De stad heeft tal van straatkunst en graffiti, vooral in wijken zoals Kreuzberg en Friedrichshain."},
-{category:"Berlijn", nl:"Het Holocaustmonument in Berlijn herdenkt de slachtoffers van de Holocaust en bestaat uit 2.711 betonnen blokken."},
-{category:"Berlijn", nl:"Berlijn heeft een van de meest populaire fietsculturen in Europa."},
-{category:"Berlijn", nl:"Het Mauerpark is beroemd om zijn openluchtkaraoke en markten."},
-{category:"Berlijn", nl:"De stad heeft meer dan 3.500 restaurants en eetgelegenheden."},
-{category:"Berlijn", nl:"Berlijn is de thuisstad van de beroemde techno-scene en elektronische muziek."},
-{category:"Berlijn", nl:"Het Holocaustmonument werd in 2005 geopend en is een van de nieuwste monumenten in de stad."},
-{category:"Berlijn", nl:"Berlijn heeft een rijke muziekgeschiedenis, van klassieke muziek tot elektronische muziek."},
-{category:"Berlijn", nl:"Berlijn is een stad die beroemd is om zijn talrijke festivals, van filmfestivals tot muziekfestivals."},
-{category:"Berlijn", nl:"De stad heeft geen centrale haven, maar is wel verbonden met de Oostzee via de rivier de Oder."},
-{category:"Berlijn", nl:"Berlijn is een van de groenste steden van Duitsland met veel meren, bossen en parken."},
-{category:"Berlijn", nl:"Berlijn heeft een van de grootste metro-netwerken in Europa."},
-{category:"Berlijn", nl:"De stad heeft tientallen markten, van boerenmarkten tot tweedehands markten."},
-{category:"Berlijn", nl:"Berlijn is ook bekend om zijn indrukwekkende architectuur, van neoklassieke gebouwen tot moderne ontwerpen."},
-{category:"Berlijn", nl:"Berlijn heeft verschillende groene eilandparken in de rivieren Spree en Havel."},
-{category:"Berlijn", nl:"Het beroemde restaurant ‘Berliner Kindl Brauerei’ serveert een van de oudste bieren van Berlijn."},
-{category:"Berlijn", nl:"De stad heeft een rijke geschiedenis van kunst en cultuur, van de Weimar Republiek tot de hedendaagse tijd."},
-{category:"Berlijn", nl:"Berlijn is een stad waar geschiedenis en moderne tijd naadloos met elkaar worden gecombineerd."},
-{category:"Berlijn", nl:"Berlijn is een populaire bestemming voor studenten, met een van de grootste studentengemeenschappen in Europa."},
-{category:"Berlijn", nl:"Het had een van de grootste concentratiekampen van Nazi-Duitsland, het concentratiekamp Sachsenhausen, net buiten de stad."},
-{category:"Berlijn", nl:"De stad herbergt de grootste verzameling Surrealistische kunst in Europa."},
-{category:"Berlijn", nl:"Berlijn heeft zich gepositioneerd als een stad van tolerantie en openheid, die ook een belangrijke bestemming is voor LGBTQ+-toerisme."},
-{category:"Berlijn", nl:"De beroemde Berliner Philharmoniker is een van de belangrijkste orkesten ter wereld."},
-{category:"Berlijn", nl:"Berlijn heeft de grootste openbare bibliotheek van Duitsland, de Staatsbibliothek zu Berlin."},
-{category:"Berlijn", nl:"Berlijn is de thuishaven van een van de grootste streetfoodmarkten in Europa, vooral in de buurt van Kreuzberg."},
-{category:"Berlijn", nl:"De stad biedt een enorme variëteit aan eten, van internationale keukens tot traditionele Duitse gerechten."}
-{category:"Italië", nl:"Italië is het thuisland van de Renaissance, een culturele beweging die het wereldbeeld en de kunst veranderde."},
-{category:"Italië", nl:"Rome, de hoofdstad van Italië, was ooit het centrum van het Romeinse Rijk."},
-{category:"Italië", nl:"De Colosseum in Rome is een van de zeven wereldwonderen."},
-{category:"Italië", nl:"Venetië staat bekend om zijn kanalen en is een populaire toeristische bestemming."},
-{category:"Italië", nl:"De Italiaanse keuken is beroemd over de hele wereld, vooral voor pizza, pasta en gelato."},
-{category:"Italië", nl:"Italië heeft 55 UNESCO-werelderfgoederen, meer dan welk ander land ook."},
-{category:"Italië", nl:"Milaan is de modehoofdstad van de wereld, bekend om de Milaan Modeweek."},
-{category:"Italië", nl:"De Fiat 500 is een iconische Italiaanse auto."},
-{category:"Italië", nl:"Italië produceert wijn in grote hoeveelheden en is een van de grootste wijnproducenten ter wereld."},
-{category:"Italië", nl:"De Vaticaanstad, de kleinste onafhankelijke staat ter wereld, ligt volledig binnen Rome."},
-{category:"Italië", nl:"De Italiaanse Alpen vormen de noordelijke grens van het land."},
-{category:"Italië", nl:"Italië heeft meer dan 1500 meren, waarvan het Lago di Garda het grootste is."},
-{category:"Italië", nl:"De Italiaanse taal is afgeleid van het Latijn, de taal van het oude Rome."},
-{category:"Italië", nl:"Pompeï, een oude Romeinse stad, werd verwoest door de uitbarsting van de Vesuvius in 79 na Christus."},
-{category:"Italië", nl:"Het Castel del Monte in Puglia is een middeleeuws kasteel dat bekend staat om zijn mysterieuze geometrische vorm."},
-{category:"Italië", nl:"Sicilië is het grootste eiland in de Middellandse Zee en heeft een rijke geschiedenis."},
-{category:"Italië", nl:"Rome heeft de oudste nog werkende waterleiding ter wereld, de Aqua Virgo."},
-{category:"Italië", nl:"Italië heeft een van de oudste en beroemdste opera tradities ter wereld."},
-{category:"Italië", nl:"De Italiaanse steden Florence en Venetië zijn belangrijke centra van kunst en architectuur."},
-{category:"Italië", nl:"Italië is de bakermat van beroemde kunstenaars zoals Leonardo da Vinci, Michelangelo en Raphael."},
-{category:"Italië", nl:"Italië is het land waar de beroemde Fiat 500 is geproduceerd."},
-{category:"Italië", nl:"Het Italiaanse eiland Capri is beroemd om zijn adembenemende natuur en luxueuze sfeer."},
-{category:"Italië", nl:"Florence is de geboorteplaats van de beroemde schilder en uitvinder Leonardo da Vinci."},
-{category:"Italië", nl:"Het Italiaanse eiland Sardinië heeft prachtige stranden en een rijke cultuur."},
-{category:"Italië", nl:"De stad Pisa staat wereldwijd bekend om haar scheve toren."},
-{category:"Italië", nl:"Het nationale gerecht van Italië is de pizza, die in Napels werd uitgevonden."},
-{category:"Italië", nl:"De Italiaanse voetbalcompetitie Serie A is een van de sterkste ter wereld."},
-{category:"Italië", nl:"De stad Florence wordt vaak beschouwd als de bakermat van de Renaissance."},
-{category:"Italië", nl:"Italië heeft een rijke traditie in het maken van wijn, met beroemde regio's zoals Toscane en Piemonte."},
-{category:"Italië", nl:"De Amalfikust, in Zuid-Italië, is beroemd om zijn dramatische kliffen en schilderachtige dorpjes."},
-{category:"Italië", nl:"Italië heeft talloze prachtige eilanden, waaronder Sicilië en Sardinië."}
-{category:"Zwitserland", nl:"Zwitserland staat bekend om zijn neutrale politiek en heeft geen militaire betrokkenheid in conflicten sinds 1815."},
-{category:"Zwitserland", nl:"De Zwitserse Alpen zijn een van de mooiste bergketens ter wereld, met beroemde bergen zoals de Matterhorn."},
-{category:"Zwitserland", nl:"Zwitserland heeft vier officiële talen: Duits, Frans, Italiaans en Romansh."},
-{category:"Zwitserland", nl:"De Zwitserse horloge-industrie is wereldwijd beroemd voor zijn precisie en kwaliteit."},
-{category:"Zwitserland", nl:"Zwitserland is beroemd om zijn chocolade en wordt beschouwd als de bakermat van de chocoladeproductie."},
-{category:"Zwitserland", nl:"Het land heeft de hoogste levensverwachting ter wereld."},
-{category:"Zwitserland", nl:"Zwitserland heeft geen officiële hoofdstad, maar Bern wordt vaak als de administratieve hoofdstad beschouwd."},
-{category:"Zwitserland", nl:"Zwitserland is een van de rijkste landen ter wereld, met een hoge levensstandaard en een lage werkloosheid."},
-{category:"Zwitserland", nl:"De Zwitserse vlag is vierkant, wat zeer ongebruikelijk is voor een nationaal symbool."},
-{category:"Zwitserland", nl:"Het land heeft het hoogste aantal kabelbanen per hoofd van de bevolking ter wereld."},
-{category:"Zwitserland", nl:"Zwitserland is beroemd om zijn onafhankelijke bankwezen, met een focus op privacy en stabiliteit."},
-{category:"Zwitserland", nl:"Zwitserland heeft een rijke traditie van schilderkunst en kunst, met beroemde kunstenaars zoals Alberto Giacometti."},
-{category:"Zwitserland", nl:"De Zwitserse keuken is beroemd om gerechten zoals fondue, raclette en rösti."},
-{category:"Zwitserland", nl:"De stad Genève is de thuisbasis van de Verenigde Naties en de Wereldgezondheidsorganisatie."},
-{category:"Zwitserland", nl:"Zwitserland heeft geen grote steden, maar de grootste stad is Zürich."},
-{category:"Zwitserland", nl:"De Zwitserse economie is een van de meest competitieve ter wereld."},
-{category:"Zwitserland", nl:"De Zwitserse banknote is gemaakt van katoen, wat het moeilijk maakt om te vervalsen."},
-{category:"Zwitserland", nl:"Zwitserland heeft ongeveer 1500 meren, waarvan het grootste het Bodenmeer is."},
-{category:"Zwitserland", nl:"De Zwitserse federale regering heeft geen parlement in de traditionele zin; het bestaat uit zeven ministers."},
-{category:"Zwitserland", nl:"De stad Basel is een belangrijk centrum voor kunst en geneeskunde."},
-{category:"Zwitserland", nl:"Zwitserland is een van de weinige landen die geen gevangenisstraffen voor belastingontduiking kent."},
-{category:"Zwitserland", nl:"Het land heeft strenge milieuregels, waaronder het verbod op het gebruik van pesticiden in de landbouw."},
-{category:"Zwitserland", nl:"Zwitserland is de thuisbasis van het beroemde Zwitsers Rode Kruis."},
-{category:"Zwitserland", nl:"De Zwitserse bevolking is een van de meest stedelijke ter wereld."},
-{category:"Zwitserland", nl:"De Zwitserse economie is bekend om zijn focus op precisie en technologie, en is de thuisbasis van grote bedrijven zoals Nestlé en Rolex."}
-{category:"Oostenrijk", nl:"Oostenrijk is de geboorteplaats van de beroemde componist Wolfgang Amadeus Mozart."},
-{category:"Oostenrijk", nl:"De hoofdstad Wenen is bekend om zijn rijke muzikale en culturele geschiedenis."},
-{category:"Oostenrijk", nl:"Oostenrijk is beroemd om zijn alpine skigebieden, zoals St. Anton en Kitzbühel."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft een van de hoogste levensverwachtingen in de wereld."},
-{category:"Oostenrijk", nl:"De Oostenrijkse vlag is rood-wit-rood, een van de oudste vlaggen in Europa."},
-{category:"Oostenrijk", nl:"Wenen heeft het beroemde Schönbrunn Paleis, dat ooit de zomerresidentie van de Habsburgse keizers was."},
-{category:"Oostenrijk", nl:"Oostenrijk is een van de grootste producenten van wijn in Europa."},
-{category:"Oostenrijk", nl:"De Oostenrijkse keuken is beroemd om gerechten zoals Wiener Schnitzel en Sachertorte."},
-{category:"Oostenrijk", nl:"De Alpen vormen een groot deel van Oostenrijk en bieden indrukwekkende berglandschappen."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft een rijke traditie in klassieke muziek, met beroemde componisten zoals Beethoven en Haydn."},
-{category:"Oostenrijk", nl:"In Oostenrijk zijn er meer dan 20.000 kastelen en forten."},
-{category:"Oostenrijk", nl:"De stad Salzburg, de geboorteplaats van Mozart, heeft prachtige barokke gebouwen."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft meer dan 4000 musea, waarvan vele gewijd zijn aan kunst, muziek en wetenschap."},
-{category:"Oostenrijk", nl:"De stad Innsbruck is beroemd om zijn rol als gaststad van de Olympische Winterspelen."},
-{category:"Oostenrijk", nl:"Oostenrijk is een belangrijke producent van zout, met de beroemde zoutmijnen van Hallstatt."},
-{category:"Oostenrijk", nl:"De Oostenrijkse filosofie en wetenschap hebben wereldwijd invloed gehad, met denkers zoals Ludwig Wittgenstein."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft geen kustlijn, maar het heeft wel veel meren, waaronder het Neusiedlersee."},
-{category:"Oostenrijk", nl:"De Oostenrijkse economie is sterk gericht op industrie, vooral de auto- en machinebouw."},
-{category:"Oostenrijk", nl:"Het Land van Salzburg is beroemd om zijn schilderachtige dorpjes en bergen."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft een van de beste openbare transportsystemen in Europa."},
-{category:"Oostenrijk", nl:"De stad Wenen herbergt de beroemde Stephansdom, een gotische kathedraal die al sinds de 12e eeuw bestaat."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft veel populaire vakantiegebieden voor zowel zomer- als wintertoerisme."},
-{category:"Oostenrijk", nl:"Oostenrijk is het thuisland van de beroemde schilder Gustav Klimt."},
-{category:"Oostenrijk", nl:"Oostenrijkse koffiehuizen zijn een belangrijk onderdeel van de culturele traditie, vooral in Wenen."},
-{category:"Oostenrijk", nl:"Oostenrijk heeft een strenge milieuwetgeving en is een van de groenste landen in Europa."},
-{category:"Oostenrijk", nl:"Oostenrijk is een van de landen met de hoogste aantal UNESCO Werelderfgoederen per vierkante kilometer."},
-{category:"Oostenrijk", nl:"In Oostenrijk worden jaarlijks talloze muziekfestivals gehouden, waaronder het beroemde Salzburg Festival."}
-{category:"Alaska", nl:"Alaska is de grootste staat van de Verenigde Staten, met een oppervlakte van meer dan 1,7 miljoen vierkante kilometer."},
-{category:"Alaska", nl:"Het land heeft meer dan 3 miljoen meren, waarvan veel in afgelegen gebieden liggen."},
-{category:"Alaska", nl:"De Mount Denali is de hoogste berg in Noord-Amerika, met een hoogte van 6190 meter."},
-{category:"Alaska", nl:"Alaska is de enige Amerikaanse staat die geen belasting heft op persoonlijke inkomsten."},
-{category:"Alaska", nl:"Alaska heeft een van de grootste wildernisgebieden ter wereld, met 16 nationale parken."},
-{category:"Alaska", nl:"In Alaska leven talrijke wilde dieren, waaronder beren, wolven en zeehonden."},
-{category:"Alaska", nl:"De staat is beroemd om zijn indrukwekkende gletsjers, die door de eeuwen heen zijn gevormd."},
-{category:"Alaska", nl:"Alaska was vroeger een Russische kolonie en werd in 1867 door de VS gekocht."},
-{category:"Alaska", nl:"Alaska heeft de meeste vulkanen van de Verenigde Staten, met ongeveer 130 actieve vulkanen."},
-{category:"Alaska", nl:"Het klimaat in Alaska varieert van Arctisch tot subarctisch, afhankelijk van de regio."},
-{category:"Alaska", nl:"Alaska heeft de langste dag en de langste nacht van de Verenigde Staten, afhankelijk van het seizoen."},
-{category:"Alaska", nl:"De staat heeft een rijke inheemse cultuur, met verschillende inheemse groepen zoals de Inuit en Aleoeten."},
-{category:"Alaska", nl:"Alaska is beroemd om de aurora borealis, of het noorderlicht, dat vaak te zien is in de wintermaanden."},
-{category:"Alaska", nl:"Alaska produceert meer dan 50% van de vis die in de Verenigde Staten wordt geconsumeerd."},
-{category:"Alaska", nl:"Alaska heeft een van de laagste bevolkingsdichtheden van de VS, met minder dan 1 persoon per vierkante mijl."},
-{category:"Alaska", nl:"Het nationale wildpark Wrangell-St. Elias is het grootste park in de VS."},
-{category:"Alaska", nl:"De staat heeft meer dan 6.640 kilometer kustlijn, wat het de langste kustlijn van de VS maakt."},
-{category:"Alaska", nl:"Alaska is de thuisbasis van de grootste stad van de staat, Anchorage."},
-{category:"Alaska", nl:"De staat heeft een rijke geschiedenis van goudmijnen, met de beroemde Klondike Gold Rush van 1897."},
-{category:"Alaska", nl:"De Tongass National Forest in Alaska is het grootste regenwoud van Noord-Amerika."},
-{category:"Alaska", nl:"In Alaska liggen enkele van de grootste ruige natuurgebieden van de VS, waaronder het Gates of the Arctic National Park."},
-{category:"Alaska", nl:"Alaska is een belangrijke producent van olie, gas en mineralen, en de olievelden van Prudhoe Bay zijn de grootste in Noord-Amerika."},
-{category:"Alaska", nl:"In Alaska vindt de Iditarod Sled Dog Race plaats, een van de beroemdste hondensledetochten ter wereld."},
-{category:"Alaska", nl:"De staat is beroemd om zijn uitstekende mogelijkheden voor wildwatervaren en vissen."},
-{category:"Alaska", nl:"Alaska heeft het hoogste percentage van staatseigendom van land van elke Amerikaanse staat."},
-{category:"Alaska", nl:"Alaska heeft een van de mooiste en ruigste nationale parken, zoals Denali National Park."},
-{category:"Alaska", nl:"Het klimaat in Alaska maakt het een uitdaging om te wonen, maar het biedt ook unieke ervaringen, zoals de middernachtzon."}
-{category:"Zweden", nl:"Zweden heeft een van de hoogste levensstandaarden ter wereld."},
-{category:"Zweden", nl:"De hoofdstad van Zweden, Stockholm, ligt verspreid over 14 eilanden en is verbonden door meer dan 50 bruggen."},
-{category:"Zweden", nl:"Zweden is het thuisland van de Nobelprijs, die jaarlijks wordt uitgereikt in Stockholm."},
-{category:"Zweden", nl:"De bekendste Zweedse exportproducten zijn Volvo, IKEA en Ericsson."},
-{category:"Zweden", nl:"Zweden heeft een van de beste onderwijs- en gezondheidszorgsystemen ter wereld."},
-{category:"Zweden", nl:"Zweden heeft meer dan 100.000 meren, wat het land een van de rijkste waterrijke gebieden van Europa maakt."},
-{category:"Zweden", nl:"In Zweden komt het middernachtzon fenomeen voor, vooral in het noorden tijdens de zomermaanden."},
-{category:"Zweden", nl:"Het Zweedse koninkrijk heeft een parlementaire monarchie, met een constitutionele monarch als staatshoofd."},
-{category:"Zweden", nl:"Zweden is een van de groenste landen in Europa, met veel bossen en natuurgebieden."},
-{category:"Zweden", nl:"Zweedse gerechten zoals köttbullar (meatballs) en smörgåsbord zijn wereldberoemd."},
-{category:"Zweden", nl:"De beroemde vakantiebestemming, het Abisko National Park in Zweden, is een van de beste plekken om het noorderlicht te zien."},
-{category:"Zweden", nl:"Zweden was tot 1814 in oorlog met Rusland, maar het heeft sindsdien een neutrale rol in internationale conflicten aangenomen."},
-{category:"Zweden", nl:"De Zweedse economie is een van de sterkste in de Europese Unie, met veel export van producten en technologie."},
-{category:"Zweden", nl:"Het land is beroemd om zijn sauna's, die traditioneel in Zweden worden gebruikt om te ontspannen."},
-{category:"Zweden", nl:"Zweden heeft een uitgebreid sociaal vangnet en staat bekend om zijn progressieve sociale beleid."},
-{category:"Zweden", nl:"Zweden heeft wereldwijd invloed op mode, design en muziek, met artiesten zoals ABBA en Avicii."},
-{category:"Zweden", nl:"Zweden heeft geen officiële staatstaal, maar Zweeds is de meest gesproken taal."},
-{category:"Zweden", nl:"Zweden heeft uitgebreide openbare transportnetwerken, waaronder een van de snelste treinroutes ter wereld."},
-{category:"Zweden", nl:"Zweedse bosgebieden bedekken ongeveer 69% van het land, wat het een van de groenste landen in Europa maakt."},
-{category:"Zweden", nl:"In Zweden vind je veel middeleeuwse kastelen, waarvan sommige nog steeds als musea worden gebruikt."},
-{category:"Zweden", nl:"Het bekende amusementpark Liseberg in Göteborg is een van de populairste attracties in Zweden."},
-{category:"Zweden", nl:"In Zweden wordt het meeste elektriciteit opgewekt uit hernieuwbare energiebronnen zoals waterkracht en windenergie."},
-{category:"Zweden", nl:"Zweden heeft een van de laagste criminaliteitscijfers in Europa."},
-{category:"Zweden", nl:"Zweedse wetgeving zorgt ervoor dat gendergelijkheid en inclusiviteit worden bevorderd in de samenleving."},
-{category:"Zweden", nl:"Zweden heeft een van de beste systemen voor ouderschapsverlof in de wereld, met generositeit richting ouders."},
-{category:"Zweden", nl:"Zweden was het eerste land ter wereld dat in 1967 het verkeer omkeerde van links naar rechts rijden."},
-{category:"Zweden", nl:"Zweden is het thuis van de wereldberoemde IKEA, die bekend staat om zijn platte verpakkingen en betaalbare meubels."},
-{category:"Zweden", nl:"Het land heeft een van de strengste milieuwetten ter wereld en is toonaangevend op het gebied van duurzaamheid."}
-{category:"IJsland", nl:"IJsland is het thuis van de beroemde geisers, zoals de Geysir, die de naam 'geiser' aan alle geisers wereldwijd gaf."},
-{category:"IJsland", nl:"De hoofdstad van IJsland, Reykjavik, is de noordelijkste hoofdstad ter wereld."},
-{category:"IJsland", nl:"IJsland heeft meer dan 130 vulkanen, en veel daarvan zijn nog steeds actief."},
-{category:"IJsland", nl:"IJsland heeft geen bossen, maar het land wordt gekarakteriseerd door vulkanen, gletsjers en lavavelden."},
-{category:"IJsland", nl:"Het noorderlicht, ook wel de aurora borealis, kan het hele jaar door in IJsland worden gezien."},
-{category:"IJsland", nl:"IJsland heeft een van de laagste criminaliteitspercentages ter wereld."},
-{category:"IJsland", nl:"In IJsland wordt geothermische energie veel gebruikt voor verwarming en elektriciteit."},
-{category:"IJsland", nl:"IJsland heeft een zeer lage bevolkingsdichtheid, met ongeveer 370.000 inwoners."},
-{category:"IJsland", nl:"IJsland heeft geen insecten zoals muggen, wat het een populaire bestemming maakt voor toeristen."},
-{category:"IJsland", nl:"IJsland heeft geen bomen, maar er zijn herplantingsprojecten gaande om bossen weer op te bouwen."},
-{category:"IJsland", nl:"De volksmuziek van IJsland is wereldwijd bekend, en artiesten zoals Björk en Sigur Rós zijn wereldberoemd."},
-{category:"IJsland", nl:"IJsland heeft 3 nationale parken, waaronder het Thingvellir National Park, dat op de UNESCO Werelderfgoedlijst staat."},
-{category:"IJsland", nl:"Het beroemde blauwe lagune in IJsland is een geothermisch spabaden dat zowel ontspanning als gezondheidsvoordelen biedt."},
-{category:"IJsland", nl:"In IJsland wordt veel vis gevangen, vooral kabeljauw, en visserij is een belangrijke industrie."},
-{category:"IJsland", nl:"IJsland is een van de weinige landen ter wereld zonder mosquitos, wat het aantrekkelijk maakt voor toeristen."},
-{category:"IJsland", nl:"De IJslandse taal is een van de oudste ongewijzigde talen die nog steeds wordt gesproken."},
-{category:"IJsland", nl:"IJsland heeft geen militaire strijdkrachten en vertrouwt op vrede en diplomatie."},
-{category:"IJsland", nl:"De eerste parlementaire democratie ter wereld werd in IJsland opgericht, bekend als de Althing."},
-{category:"IJsland", nl:"IJsland heeft verschillende actieve vulkanen, waaronder de beroemde Eyjafjallajökull, die in 2010 uitbarstte."},
-{category:"IJsland", nl:"IJsland heeft een schat aan warmwaterbronnen die door de eeuwen heen populair zijn voor hun geneeskrachtige eigenschappen."},
-{category:"IJsland", nl:"IJsland is beroemd om zijn unieke natuur, van gletsjers tot vulkanen, en trekt natuurliefhebbers van over de hele wereld."},
-{category:"IJsland", nl:"IJsland heeft weinig verkeersdrukte en een uitstekend wegennetwerk, vooral gericht op het toerisme."},
-{category:"IJsland", nl:"In IJsland kun je veel watervallen vinden, waaronder de populaire Gullfoss en Seljalandsfoss."},
-{category:"IJsland", nl:"IJsland is een van de beste plekken ter wereld om de walvissen te spotten."},
-{category:"IJsland", nl:"IJsland heeft een sterke traditie van poëzie en literatuur, die teruggaat tot de Vikingtijd."},
-{category:"IJsland", nl:"De keuken van IJsland is voornamelijk gebaseerd op vis en lamsvlees, en de nationale gerecht is hákarl (gefermenteerde haai)."},
-{category:"IJsland", nl:"IJsland heeft geen spoorwegen, maar het heeft een uitstekende bus- en autoverhuursysteem voor toeristen."},
-{category:"IJsland", nl:"IJsland heeft een enorm aantal vulkanische meren en warmwaterbronnen die populair zijn bij toeristen."},
-{category:"IJsland", nl:"De IJslandse economie is sterk afhankelijk van energieproductie, visserij en toerisme."}
-{category:"Mexico", nl:"Mexico is het op 3 na grootste land in Latijns-Amerika, na Brazilië en Argentinië."},
-{category:"Mexico", nl:"De hoofdstad van Mexico, Mexico-Stad, is een van de grootste steden ter wereld."},
-{category:"Mexico", nl:"Mexico heeft een rijke cultuur, met invloeden van de oude Azteken en Maya's."},
-{category:"Mexico", nl:"Het land heeft 34 werelderfgoedlocaties die onder bescherming staan van UNESCO."},
-{category:"Mexico", nl:"Mexico is beroemd om zijn keuken, waaronder tacos, enchiladas en guacamole."},
-{category:"Mexico", nl:"De Maya's en Azteken bouwden grote piramides in Mexico, zoals de Piramide van de Zon in Teotihuacán."},
-{category:"Mexico", nl:"Mexico heeft diverse klimaten, van woestijn tot tropisch regenwoud."},
-{category:"Mexico", nl:"Het nationale symbool van Mexico is de adelaar die een slang vasthoudt, wat te zien is op de vlag."},
-{category:"Mexico", nl:"De officiële taal van Mexico is Spaans, maar het land heeft ook 68 erkende inheemse talen."},
-{category:"Mexico", nl:"Mexico heeft de grootste economie in Latijns-Amerika."},
-{category:"Mexico", nl:"De Mexicaanse grens met de VS is de langste landgrens tussen twee landen in de wereld."},
-{category:"Mexico", nl:"Mexico heeft meer dan 6.000 verschillende soorten cactusplanten."},
-{category:"Mexico", nl:"Chichen Itza, een van de nieuwe zeven wereldwonderen, is een oude Maya-stad in Mexico."},
-{category:"Mexico", nl:"Mexico heeft een van de oudste en meest verfijnde beschavingen ter wereld, die meer dan 3.000 jaar teruggaat."},
-{category:"Mexico", nl:"Het land is rijk aan natuurlijke hulpbronnen, waaronder olie, zilver en goud."},
-{category:"Mexico", nl:"De Mexicaanse Riviera, met stranden zoals Cancun en Playa del Carmen, trekt jaarlijks miljoenen toeristen."},
-{category:"Mexico", nl:"De Mexicaanse economie is sterk afhankelijk van toerisme, olie en landbouw."},
-{category:"Mexico", nl:"Mexico is het land waar de tequila oorspronkelijk vandaan komt, gemaakt van de blauwe agaveplant."},
-{category:"Mexico", nl:"Mexico heeft een van de grootste biodiversiteiten ter wereld, met duizenden dier- en plantensoorten."},
-{category:"Mexico", nl:"De luchten boven Mexico-Stad zijn beroemd vanwege de spectaculaire zonsopgangen en zonsondergangen."},
-{category:"Mexico", nl:"De Mariachi-muziek is een beroemd cultureel symbool van Mexico."},
-{category:"Mexico", nl:"Het land heeft de op een na grootste oppervlakte aan regenwoud in Latijns-Amerika, na Brazilië."},
-{category:"Mexico", nl:"Mexico heeft een groot aantal archeologische vindplaatsen van oude beschavingen, zoals de Maya's en de Olmeken."},
-{category:"Mexico", nl:"De Mexicaanse keuken is zo invloedrijk dat het in 2010 op de UNESCO-lijst van immaterieel cultureel erfgoed werd geplaatst."},
-{category:"Mexico", nl:"Mexico heeft 18 verschillende biosfeerreservaten die belangrijk zijn voor de wereldwijde biodiversiteit."},
-{category:"Mexico", nl:"Het populaire feest 'Día de los Muertos' (Dag van de Doden) is een Mexicaanse traditie die wereldwijd bekend is."},
-{category:"Mexico", nl:"De Azteken ontwikkelden de eerste vorm van chocolade, die later wereldwijd populair werd."},
-{category:"Mexico", nl:"Mexico heeft enkele van de grootste en mooiste natuurreservaten van Noord-Amerika."},
-{category:"Mexico", nl:"Mexico is een van de grootste producenten van koffie ter wereld."},
-{category:"Mexico", nl:"Het land is beroemd om zijn kleurrijke markten, zoals de markten in Oaxaca en Mexico-Stad."}
-{category:"Londen", nl:"Londen is de hoofdstad van het Verenigd Koninkrijk en de grootste stad van Engeland."},
-{category:"Londen", nl:"Londen heeft meer dan 300 musea, waaronder het British Museum, dat een van de grootste ter wereld is."},
-{category:"Londen", nl:"De beroemde Big Ben klok in Londen is een van de meest iconische symbolen van Groot-Brittannië."},
-{category:"Londen", nl:"Londen heeft 6 belangrijke luchthavens, waaronder Heathrow, de drukste luchthaven van Europa."},
-{category:"Londen", nl:"Londen is beroemd om zijn parken, zoals Hyde Park, Regents Park en St. James’s Park."},
-{category:"Londen", nl:"Londen heeft de oudste metro ter wereld, die in 1863 werd geopend."},
-{category:"Londen", nl:"De stad is een wereldcentrum voor financiën, mode, kunst en cultuur."},
-{category:"Londen", nl:"Londen heeft meer dan 2400 openbare toiletten, wat een van de hoogste aantallen van wereldsteden is."},
-{category:"Londen", nl:"Buckingham Palace, de residentie van de Britse monarch, is gelegen in het hart van Londen."},
-{category:"Londen", nl:"Londen heeft de beroemde Tower of London, een kasteel dat ooit dienst deed als gevangenis."},
-{category:"Londen", nl:"De London Eye is een van de grootste reuzenraderen ter wereld."},
-{category:"Londen", nl:"Londen is een van de meest bezochte steden ter wereld, met miljoenen toeristen per jaar."},
-{category:"Londen", nl:"Londen is de thuisbasis van wereldberoemde theaters zoals het West End, het Londense theaterdistrict."},
-{category:"Londen", nl:"De stad heeft meer dan 8000 restaurants die de verschillende culturen van Londen vertegenwoordigen."},
-{category:"Londen", nl:"Londen heeft een van de grootste bus- en metronetwerken ter wereld."},
-{category:"Londen", nl:"Londen heeft de oudste openbare bibliotheek van het Verenigd Koninkrijk, de British Library."},
-{category:"Londen", nl:"Londen wordt vaak genoemd als een van de groenste steden ter wereld, met meer dan 3 miljoen bomen."},
-{category:"Londen", nl:"De stad heeft een rijke muziekgeschiedenis en is de thuisbasis van beroemde bands zoals The Beatles en The Rolling Stones."},
-{category:"Londen", nl:"Londen heeft meer dan 1000 historische pubs, waarvan sommige dateren uit de 16e eeuw."},
-{category:"Londen", nl:"De rivier de Theems stroomt door het hart van Londen, en er zijn vele bruggen die de stad verbinden."},
-{category:"Londen", nl:"Londen heeft een van de grootste en oudste markten ter wereld, zoals Borough Market en Camden Market."},
-{category:"Londen", nl:"De stad heeft een van de grootste concentraties van wolkenkrabbers en moderne architectuur in Europa."},
-{category:"Londen", nl:"Londen heeft een uitgebreide internationale culturele scene, met festivals, tentoonstellingen en shows het hele jaar door."},
-{category:"Londen", nl:"Londen is de thuisstad van beroemde universiteiten, zoals de Universiteit van Londen en de London School of Economics."},
-{category:"Londen", nl:"Londen is een van de grootste internationale hubs voor kunst en design."}
-{category:"New York City", nl:"New York City is de grootste stad van de Verenigde Staten en een van de grootste ter wereld."},
-{category:"New York City", nl:"De stad bestaat uit vijf stadsdelen: Manhattan, Brooklyn, Queens, The Bronx en Staten Island."},
-{category:"New York City", nl:"Times Square is een van de meest iconische en drukste plekken ter wereld."},
-{category:"New York City", nl:"De Vrijheidsbeeld, een geschenk van Frankrijk, is een symbool van vrijheid en democratie."},
-{category:"New York City", nl:"De stad heeft 's werelds grootste en drukste metro- en busnetwerken."},
-{category:"New York City", nl:"Central Park is het grootste park in Manhattan en trekt jaarlijks miljoenen bezoekers."},
-{category:"New York City", nl:"New York City is het culturele en financiële centrum van de Verenigde Staten."},
-{category:"New York City", nl:"De stad is beroemd om zijn skyline, met iconen zoals het Empire State Building en de One World Trade Center."},
-{category:"New York City", nl:"New York City heeft 's werelds grootste aantal wolkenkrabbers."},
-{category:"New York City", nl:"Broadway is wereldwijd bekend als het epicentrum van theater en musicals."},
-{category:"New York City", nl:"De stad heeft meer dan 800 verschillende talen die door haar inwoners worden gesproken."},
-{category:"New York City", nl:"New York City is de thuisstad van beroemde musea zoals het Metropolitan Museum of Art en het Museum of Modern Art (MoMA)."},
-{category:"New York City", nl:"Het Guggenheim Museum in New York is een van de meest iconische musea ter wereld, ontworpen door Frank Lloyd Wright."},
-{category:"New York City", nl:"De stad heeft meer dan 50.000 restaurants, die een enorm scala aan keukens aanbieden."},
-{category:"New York City", nl:"New York City is de grootste havenstad van de VS."},
-{category:"New York City", nl:"De stad heeft een uitgebreid openbaar vervoer, bestaande uit metro, bussen en veerboten."},
-{category:"New York City", nl:"New York is beroemd om zijn hoge kosten van levensonderhoud, vooral in Manhattan."},
-{category:"New York City", nl:"Wall Street, het financiële district van New York City, is de thuisbasis van de New York Stock Exchange."},
-{category:"New York City", nl:"Het World Trade Center Memorial is een herdenkingsplaats ter ere van de slachtoffers van 9/11."},
-{category:"New York City", nl:"De stad is beroemd om zijn diverse bevolking en multiculturele sfeer."},
-{category:"New York City", nl:"New York City heeft honderden theaters, galerijen, muziekpodia en nachtclubs."},
-{category:"New York City", nl:"De stad organiseert jaarlijks de New York Fashion Week, een van de grootste mode-evenementen ter wereld."},
-{category:"New York City", nl:"New York City is de thuisbasis van beroemde sportteams zoals de New York Yankees (baseball) en de New York Knicks (basketbal)."},
-{category:"New York City", nl:"De stad heeft een van de grootste en bekendste stadsparken ter wereld, Central Park."},
-{category:"New York City", nl:"New York City heeft een van de grootste concentraties van wolkenkrabbers ter wereld."},
-{category:"New York City", nl:"De stad is de grootste producent van theater- en televisieproducties in de Verenigde Staten."},
-{category:"New York City", nl:"Het New York City Marathon is een van de grootste hardloopwedstrijden ter wereld."}
-{category:"Argentinië", nl:"Argentinië is het achtste grootste land ter wereld en het grootste Spaanstalige land."},
-{category:"Argentinië", nl:"De hoofdstad van Argentinië is Buenos Aires, een van de grootste steden van Zuid-Amerika."},
-{category:"Argentinië", nl:"Argentinië heeft een van de grootste veestapels ter wereld, en het staat bekend om zijn vlees."},
-{category:"Argentinië", nl:"De naam 'Argentinië' komt van het Latijnse woord 'argentum', wat zilver betekent."},
-{category:"Argentinië", nl:"De Andes, de langste bergketen ter wereld, loopt door het westen van Argentinië."},
-{category:"Argentinië", nl:"Het nationale gerecht van Argentinië is asado, een soort barbecue."},
-{category:"Argentinië", nl:"De Iguazú-watervallen, gelegen aan de grens met Brazilië, zijn een van de grootste watervallen ter wereld."},
-{category:"Argentinië", nl:"Argentinië is de grootste wijnproducent van Zuid-Amerika en een van de grootste ter wereld."},
-{category:"Argentinië", nl:"De Patagonië-regio in het zuiden van Argentinië is beroemd om zijn ongerepte natuur en gletsjers."},
-{category:"Argentinië", nl:"De tango, een van de bekendste dansen ter wereld, komt oorspronkelijk uit Buenos Aires."},
-{category:"Argentinië", nl:"Argentinië heeft een rijke geschiedenis van literatuur, met beroemde schrijvers zoals Jorge Luis Borges."},
-{category:"Argentinië", nl:"Het land heeft een divers klimaat, van tropisch in het noorden tot ijskoud in het zuiden."},
-{category:"Argentinië", nl:"Argentinië is de thuisbasis van de beroemde dieren in de regio, zoals puma's, lama's en condors."},
-{category:"Argentinië", nl:"De Argentijnse voetbalteams, zoals Boca Juniors en River Plate, hebben veel wereldberoemde voetballers voortgebracht."},
-{category:"Argentinië", nl:"De vlag van Argentinië bevat de zon van May, een symbool van onafhankelijkheid."},
-{category:"Argentinië", nl:"De Perito Moreno-gletsjer in Patagonië is een van de weinige gletsjers ter wereld die in omvang toeneemt."},
-{category:"Argentinië", nl:"Argentinië heeft meer dan 20 nationale parken die bescherming bieden aan de biodiversiteit van het land."},
-{category:"Argentinië", nl:"De stad Ushuaia, gelegen op het meest zuidelijke punt van Zuid-Amerika, wordt vaak de 'zuidelijkste stad ter wereld' genoemd."},
-{category:"Argentinië", nl:"Argentinië heeft meer dan 3000 kilometer kustlijn langs de Atlantische Oceaan."},
-{category:"Argentinië", nl:"Het Andesgebergte is een populaire bestemming voor wintersporten, met resorts zoals Mendoza en San Carlos de Bariloche."},
-{category:"Argentinië", nl:"De Llao Llao-mountain in Patagonië is een van de mooiste berggebieden in Argentinië."},
-{category:"Argentinië", nl:"De hoofdstad Buenos Aires is beroemd om zijn Europese architectuur, levendige cultuur en nachtleven."},
-{category:"Argentinië", nl:"De Argentijnse economie is sterk afhankelijk van landbouwproducten, zoals soja, tarwe en vlees."},
-{category:"Argentinië", nl:"Het nationaal symbool van Argentinië is de jaguar, een van de grootste katten in Zuid-Amerika."},
-{category:"Argentinië", nl:"In Argentinië worden veel beroemde wijnstreken aangetroffen, zoals Mendoza en San Juan."},
-{category:"Argentinië", nl:"De stad Rosario in Argentinië is de geboortestad van de beroemde revolutionair Che Guevara."},
-{category:"Argentinië", nl:"Het land heeft veel prachtige meren, zoals het meer van San Martín in Patagonië."},
-{category:"Argentinië", nl:"De stad Córdoba is een van de oudste steden van het land en staat bekend om zijn koloniale architectuur."}
-{category:"Canada", nl:"Canada is het op één na grootste land ter wereld, na Rusland."},
-{category:"Canada", nl:"De hoofdstad van Canada is Ottawa, hoewel Toronto de grootste stad is."},
-{category:"Canada", nl:"Canada heeft een van de grootste meren ter wereld, het Lake Superior."},
-{category:"Canada", nl:"Het land heeft 10 provincies en 3 territoria."},
-{category:"Canada", nl:"De officiële talen van Canada zijn Engels en Frans."},
-{category:"Canada", nl:"Canada heeft een van de meest diverse ecosystemen ter wereld, van arctische toendra tot tropische bossen."},
-{category:"Canada", nl:"De Canadese Rocky Mountains zijn beroemd om hun ongerepte natuur en indrukwekkende uitzichten."},
-{category:"Canada", nl:"Canada heeft wereldwijd de meeste meren van elk land, met meer dan 31.000 meren."},
-{category:"Canada", nl:"De Banff National Park in de Canadese Rockies is een van de oudste nationale parken in de wereld."},
-{category:"Canada", nl:"Canada heeft meer dan 35.000 kilometer aan kustlijn."},
-{category:"Canada", nl:"Het land is bekend om zijn gezondheidszorgsysteem, dat grotendeels wordt gefinancierd door de overheid."},
-{category:"Canada", nl:"Canada heeft de grootste aanvoer van natuurlijke hulpbronnen zoals olie, gas en mineralen."},
-{category:"Canada", nl:"De Canadese stad Montreal heeft de grootste Franse gemeenschap buiten Frankrijk."},
-{category:"Canada", nl:"In Canada bevinden zich de grootste grizzlyberenpopulaties ter wereld."},
-{category:"Canada", nl:"Canada heeft enkele van de koudste winters ter wereld, vooral in het noorden."},
-{category:"Canada", nl:"De stad Vancouver in British Columbia staat bekend om zijn diverse natuur en het milde klimaat."},
-{category:"Canada", nl:"De Canadese cultuur is sterk beïnvloed door zowel Britse als Franse tradities."},
-{category:"Canada", nl:"Canada is beroemd om zijn maple syrup, die wereldwijd wordt geëxporteerd."},
-{category:"Canada", nl:"De Canadese munt is de Canadese dollar (CAD), die wereldwijd wordt geaccepteerd."},
-{category:"Canada", nl:"Het land heeft de langste grens ter wereld zonder militaire aanwezigheid, die het deelt met de VS."},
-{category:"Canada", nl:"Niagara Falls ligt op de grens tussen Canada en de VS en is een van de grootste watervallen ter wereld."},
-{category:"Canada", nl:"Canada heeft ook een uitgebreide kustlijn langs de Noordelijke IJszee."},
-{category:"Canada", nl:"De stad Toronto heeft de beroemde CN Tower, die lange tijd het hoogste vrijstaande gebouw ter wereld was."},
-{category:"Canada", nl:"In Canada bevindt zich de grootste bevrieste waterval ter wereld, de Tangle Falls in Alberta."},
-{category:"Canada", nl:"De stad Quebec is een van de oudste steden van Noord-Amerika, gesticht in 1608."},
-{category:"Canada", nl:"Canada heeft meer dan 40.000 verschillende plantensoorten."},
-{category:"Canada", nl:"De Gaspé Peninsula in Quebec is beroemd om zijn indrukwekkende natuur en vogelobservaties."},
-{category:"Canada", nl:"Canada heeft de grootste ijsmassa in Noord-Amerika, de Laurentian Ice Cap."}
-{category:"Ierland", nl:"Ierland is een eiland in de Noord-Atlantische Oceaan en staat bekend om zijn groene landschappen."},
-{category:"Ierland", nl:"De hoofdstad van Ierland is Dublin, dat ook de grootste stad van het land is."},
-{category:"Ierland", nl:"Ierland heeft een rijke mythologische geschiedenis, met beroemde figuren zoals Cú Chulainn en de Tuatha Dé Danann."},
-{category:"Ierland", nl:"Het land heeft een milder klimaat dan andere Europese landen vanwege de nabijheid van de Atlantische Oceaan."},
-{category:"Ierland", nl:"De officiële talen van Ierland zijn Engels en Iers, maar Engels is de meest gesproken taal."},
-{category:"Ierland", nl:"Ierland is beroemd om zijn pubs en de traditie van het drinken van Guinness en andere Ierse bieren."},
-{category:"Ierland", nl:"Ierland is de thuisbasis van vele oude kastelen, zoals Blarney Castle, waar je de beroemde Blarney Stone kunt kussen."},
-{category:"Ierland", nl:"De Ierse revolutie van 1916 leidde tot de onafhankelijkheid van Ierland van Groot-Brittannië."},
-{category:"Ierland", nl:"Ierland heeft een rijke muzikale traditie, van folk tot pop, met artiesten als U2 en The Cranberries."},
-{category:"Ierland", nl:"De Cliffs of Moher aan de westkust van Ierland bieden een van de meest iconische uitzichten in Europa."},
-{category:"Ierland", nl:"Ierland is een land van veel kastelen, waarvan sommige nu dienen als hotels of toeristische attracties."},
-{category:"Ierland", nl:"Ierland heeft talloze oude kerken, met de St. Patrick's Cathedral in Dublin als een van de bekendste."},
-{category:"Ierland", nl:"Ierland heeft een rijke traditie in literatuur, met beroemde schrijvers zoals James Joyce, W.B. Yeats en Samuel Beckett."},
-{category:"Ierland", nl:"St. Patrick’s Day, op 17 maart, wordt gevierd met parades en veel groene kleding, wereldwijd."},
-{category:"Ierland", nl:"De Ierse keuken staat bekend om gerechten zoals stoofschotels, colcannon en Irish stew."},
-{category:"Ierland", nl:"Het land is beroemd om zijn vele oude ruïnes, waaronder de Newgrange Tomb, die ouder is dan de piramides van Egypte."},
-{category:"Ierland", nl:"Ierland heeft 32 graafschappen en is verdeeld tussen de republiek Ierland en Noord-Ierland, dat deel uitmaakt van het VK."},
-{category:"Ierland", nl:"De Ieren hebben een sterke traditie van vertellen en het vertellen van verhalen, die vaak worden doorgegeven in de pub."},
-{category:"Ierland", nl:"Dublin is de thuisstad van de beroemde Trinity College Library, die het beroemde Book of Kells huisvest."},
-{category:"Ierland", nl:"De Wild Atlantic Way is een schilderachtige route langs de westkust van Ierland."},
-{category:"Ierland", nl:"Ierland is beroemd om zijn folklore, met mythische wezens zoals leprechauns en banshees."},
-{category:"Ierland", nl:"De Ring of Kerry is een van de meest populaire toeristische routes in het land, met prachtige kust- en berglandschappen."},
-{category:"Ierland", nl:"Ierland heeft een van de oudste parlementen ter wereld, opgericht in 1297."},
-{category:"Ierland", nl:"De Gaelic voetbal- en hurlingteams zijn een van de belangrijkste nationale sporten in Ierland."},
-{category:"Ierland", nl:"De Ierse economie is sterk afhankelijk van de technologie- en farmaceutische industrie."},
-{category:"Ierland", nl:"Ierland staat bekend om zijn nationale parken, zoals Killarney National Park en Glenveagh National Park."}
-{category:"Schotland", nl:"Schotland is een land in het noordelijke deel van het Verenigd Koninkrijk, bekend om zijn ruige natuur."},
-{category:"Schotland", nl:"De hoofdstad van Schotland is Edinburgh, maar Glasgow is de grootste stad."},
-{category:"Schotland", nl:"Schotland is beroemd om zijn kastelen, waaronder het iconische Edinburgh Castle."},
-{category:"Schotland", nl:"Schotland heeft meer dan 400 eilanden, waarvan de Hebriden en Orkney-eilanden de bekendste zijn."},
-{category:"Schotland", nl:"De Schotse Hooglanden zijn beroemd om hun dramatische bergen, valleien en meren."},
-{category:"Schotland", nl:"Het Loch Ness-meer in Schotland is beroemd om de legende van het monster van Loch Ness."},
-{category:"Schotland", nl:"Schotland heeft een rijke muzikale traditie, met instrumenten zoals de doedelzak en de fiddle."},
-{category:"Schotland", nl:"Schotland is beroemd om zijn whisky, vooral de single malt whisky uit regio's zoals Speyside en Islay."},
-{category:"Schotland", nl:"Schotland heeft een eigen parlement en bestuurt veel van zijn interne aangelegenheden."},
-{category:"Schotland", nl:"De Schotse vlag, bekend als de Saltire, is een van de oudste nationale vlaggen in de wereld."},
-{category:"Schotland", nl:"Schotland is de thuisbasis van het beroemde sportevenement, de Highland Games, die o.a. zwaarwerpen en kogelstoten bevatten."},
-{category:"Schotland", nl:"De Schotse cultuur is sterk beïnvloed door de Keltische en Vikinggeschiedenissen."},
-{category:"Schotland", nl:"Schotland heeft de oudste universiteit van het Engelse taalgebied, de Universiteit van St Andrews."},
-{category:"Schotland", nl:"Edinburgh staat bekend om zijn jaarlijkse Edinburgh Festival Fringe, het grootste kunstfestival ter wereld."},
-{category:"Schotland", nl:"De Schotse economie is sterk afhankelijk van olieproductie, met een groot aantal olievelden in de Noordzee."},
-{category:"Schotland", nl:"Schotland heeft een van de grootste natuurreservaten van Europa, het Cairngorms National Park."},
-{category:"Schotland", nl:"Schotland is de oorsprong van de beroemde Schotse dans, de ceilidh."},
-{category:"Schotland", nl:"De Schotse keuken omvat gerechten zoals haggis, shortbread en Scotch pie."},
-{category:"Schotland", nl:"Schotland heeft meer dan 30.000 meren, waarvan Loch Lomond de grootste is."},
-{category:"Schotland", nl:"De Schotse clans hebben eeuwenlang een belangrijke rol gespeeld in de geschiedenis van het land."},
-{category:"Schotland", nl:"Schotland is beroemd om zijn oude keltische kunst en religieuze monumenten."},
-{category:"Schotland", nl:"De stad Inverness wordt vaak beschouwd als de 'hoofdstad' van de Hooglanden."},
-{category:"Schotland", nl:"Schotland heeft een aantal beroemde historische figuren voortgebracht, zoals de helden William Wallace en Rob Roy."},
-{category:"Schotland", nl:"Het land heeft veel beroemde mythes en legendes, waaronder de verhalen over de keltische helden en koning Arthur."},
-{category:"Schotland", nl:"Schotland heeft talloze oude kerken, waaronder de St. Giles’ Cathedral in Edinburgh."},
-{category:"Schotland", nl:"Schotland staat bekend om zijn imposante bergen, zoals Ben Nevis, de hoogste berg van Groot-Brittannië."}
-{category:"Noorwegen", nl:"Noorwegen ligt in het uiterste noorden van Europa en staat bekend om zijn fjorden en bergen."},
-{category:"Noorwegen", nl:"De hoofdstad van Noorwegen is Oslo."},
-{category:"Noorwegen", nl:"Noorwegen heeft een van de langste kustlijnen ter wereld, met meer dan 50.000 eilanden."},
-{category:"Noorwegen", nl:"Noorwegen heeft beroemdheden zoals de kunstenaar Edvard Munch, bekend van het schilderij 'De Schreeuw'."},
-{category:"Noorwegen", nl:"Het land heeft een indrukwekkende natuur, met vele nationale parken en natuurreservaten."},
-{category:"Noorwegen", nl:"Noorwegen is beroemd om zijn middernachtzon, vooral in de zomermaanden boven de poolcirkel."},
-{category:"Noorwegen", nl:"De Vikingen, een van de bekendste maritieme beschavingen, komen oorspronkelijk uit Noorwegen."},
-{category:"Noorwegen", nl:"Noorwegen is beroemd om de aurora borealis (noorderlicht), dat vaak te zien is in het noorden van het land."},
-{category:"Noorwegen", nl:"De officiële taal van Noorwegen is Noors, dat twee officiële varianten heeft: Bokmål en Nynorsk."},
-{category:"Noorwegen", nl:"Het land heeft een van de hoogste levensverwachtingen ter wereld."},
-{category:"Noorwegen", nl:"Noorwegen is de grootste producent van olie en gas in Europa."},
-{category:"Noorwegen", nl:"De Noorse fjorden, zoals Geirangerfjord en Sognefjord, behoren tot de mooiste natuurwonderen ter wereld."},
-{category:"Noorwegen", nl:"De Noorse koninklijke familie woont in het Koninklijk Paleis in Oslo."},
-{category:"Noorwegen", nl:"Noorwegen heeft een rijk culturele erfgoed, met beroemde schrijvers zoals Henrik Ibsen en Knut Hamsun."},
-{category:"Noorwegen", nl:"Noorwegen heeft een van de laagste misdaadcijfers ter wereld."},
-{category:"Noorwegen", nl:"Het land is beroemd om zijn traditionele houten huizen, vaak gekleed in felrode verf."},
-{category:"Noorwegen", nl:"Noorwegen heeft een uitgebreid spoorwegnetwerk, en de tocht met de Bergen Railway wordt vaak als een van de mooiste ter wereld beschouwd."},
-{category:"Noorwegen", nl:"In Noorwegen worden veel traditionele sporten beoefend, waaronder skiën, wat het nationale sportseizoen is."},
-{category:"Noorwegen", nl:"Noorwegen heeft de beroemde Noordkaap, het noordelijkste punt van Europa."},
-{category:"Noorwegen", nl:"De Noorse keuken is beroemd om zijn visgerechten, vooral zalm, die wereldwijd wordt geëxporteerd."},
-{category:"Noorwegen", nl:"In Noorwegen bevindt zich de beroemde 'Stave Church', een van de weinige middeleeuwse houten kerken in Europa."},
-{category:"Noorwegen", nl:"Noorwegen was in de 19e eeuw een deel van Zweden voordat het in 1905 zijn onafhankelijkheid verwierf."},
-{category:"Noorwegen", nl:"Noorwegen heeft een royale en schitterende natuur, van gletsjers tot bossen."},
-{category:"Noorwegen", nl:"Noorwegen heeft een van de hoogste belastingtarieven ter wereld, maar biedt ook uitstekende sociale voorzieningen."},
-{category:"Noorwegen", nl:"Het land heeft een goed uitgebouwd netwerk van veerboten en cruises om de fjorden te verkennen."},
-{category:"Noorwegen", nl:"Noorwegen is een van de groenste landen ter wereld, met een van de hoogste percentages hernieuwbare energie."},
-{category:"Noorwegen", nl:"Noorwegen is beroemd om zijn indrukwekkende houtsnijwerk en kunstnijverheid, vooral in zijn Noorse volkskunst."},
-{category:"Noorwegen", nl:"De Noorse economie is sterk afhankelijk van olie, gas en visserij."}
-{category:"Kroatië", nl:"Kroatië ligt in Zuidoost-Europa, aan de Adriatische Zee."},
-{category:"Kroatië", nl:"De hoofdstad van Kroatië is Zagreb."},
-{category:"Kroatië", nl:"Kroatië is beroemd om zijn prachtige kustlijn, met meer dan 1.000 eilanden."},
-{category:"Kroatië", nl:"Het land heeft een rijke geschiedenis en cultuur die beïnvloed is door Romeinen, Venetianen en andere beschavingen."},
-{category:"Kroatië", nl:"Kroatië was in de middeleeuwen een belangrijk koninkrijk en maakt nu deel uit van de Europese Unie."},
-{category:"Kroatië", nl:"Het Dubrovnik-kasteel, ook wel de ‘Parel van de Adriatische Zee’ genoemd, is een van de mooiste plekken in Kroatië."},
-{category:"Kroatië", nl:"De Dalmatische kust in Kroatië is beroemd om zijn charmante steden zoals Split en Zadar."},
-{category:"Kroatië", nl:"Kroatië heeft een mediterraan klimaat, met warme zomers en milde winters."},
-{category:"Kroatië", nl:"Het land is bekend om zijn wijnen, met wijngaarden die vooral in de regio Istrië liggen."},
-{category:"Kroatië", nl:"Kroatië heeft meer dan 2000 jaar geschiedenis, met invloed van het oude Rome en het Byzantijnse rijk."},
-{category:"Kroatië", nl:"De nationale park Plitvicemeren is een UNESCO Werelderfgoedlocatie en beroemd om zijn turquoise meren."},
-{category:"Kroatië", nl:"Het Kroatische erfgoed is sterk verbonden met de Kroatische taal, muziek en dans."},
-{category:"Kroatië", nl:"Het beroemde stadje Rovinj in Istrië is een van de meest pittoreske steden in Kroatië."},
-{category:"Kroatië", nl:"Kroatië heeft een bloeiende filmindustrie, met regisseurs als Dalibor Matanić die internationale erkenning hebben gekregen."},
-{category:"Kroatië", nl:"De kust van Kroatië is een van de mooiste in Europa, met ongerepte stranden en schilderachtige baaien."},
-{category:"Kroatië", nl:"Kroatië is beroemd om zijn traditionele gerechten, waaronder ‘cevapi’ (gegrild vlees) en ‘pašticada’ (stoofvlees)." },
-{category:"Kroatië", nl:"De stad Split herbergt de paleizen van de Romeinse keizer Diocletianus, die nog steeds goed bewaard zijn."},
-{category:"Kroatië", nl:"De kustlijn van Kroatië maakt deel uit van de Adriatische zee, die beroemd is om zijn kristalheldere water."},
-{category:"Kroatië", nl:"Kroatië heeft een rijke muzikale traditie, waaronder traditionele volksmuziek en de beroemde klapa-zang."},
-{category:"Kroatië", nl:"Kroatië is een populaire bestemming voor zeilen en watersporten, met talloze jachthavens langs de kust."},
-{category:"Kroatië", nl:"Het land staat bekend om zijn festivals, waaronder het Split Summer Festival en het Dubrovnik Summer Festival."},
-{category:"Kroatië", nl:"Kroatië heeft een van de mooiste en best bewaarde middeleeuwse stadsmuren, te vinden in de stad Dubrovnik."},
-{category:"Kroatië", nl:"Kroatië heeft diverse beschermde natuurgebieden, die bijdragen aan de biodiversiteit van het land."},
-{category:"Kroatië", nl:"Het land heeft vele UNESCO Werelderfgoedlocaties, waaronder het historische centrum van Split en de stad Trogir."},
-{category:"Kroatië", nl:"De stad Osijek is beroemd om zijn barokke architectuur en de rijke cultuur van de Slavonische regio."},
-{category:"Kroatië", nl:"Kroatië heeft de reputatie als een van de beste landen voor het maken van een roadtrip, vanwege zijn schilderachtige routes."}
-];
+    const baseFacts = [
+      // Mortal Kombat Facts (Expanded)
+      {category: "Mortal Kombat", nl: "Mortal Kombat werd oorspronkelijk ontwikkeld als een arcade-game in 1992."},
+      {category: "Mortal Kombat", nl: "De beroemde 'Finish Him!' lijn werd een iconische zin in de gamewereld."},
+      {category: "Mortal Kombat", nl: "Scorpion's beroemde 'Get over here!' is een van de meest herkenbare zinnen uit het spel."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat staat bekend om zijn gewelddadige gevechten en 'fatality' moves."},
+      {category: "Mortal Kombat", nl: "In de eerste Mortal Kombat-game werd gebruik gemaakt van gescande beelden van echte acteurs."},
+      {category: "Mortal Kombat", nl: "Raiden is de enige originele Mortal Kombat-personage die nog steeds in elke game van de serie verschijnt."},
+      {category: "Mortal Kombat", nl: "Sub-Zero was een van de eerste vechters die een bijzondere move had, de 'Ice Freeze'."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat 2 introduceerde personages zoals Liu Kang, Jax en Shang Tsung."},
+      {category: "Mortal Kombat", nl: "De franchise heeft meerdere films, tv-series en stripboeken geïnspireerd."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat is bekend om zijn controversiële geweld, wat leidde tot een verandering in de Amerikaanse videogamewetgeving."},
+      {category: "Mortal Kombat", nl: "De Mortal Kombat reboot in 2011 introduceerde nieuwe graphics en meer geavanceerde gameplay."},
+      {category: "Mortal Kombat", nl: "Shao Kahn, de laatste eindbaas van Mortal Kombat, is een van de meest iconische schurken in de gamingwereld."},
+      {category: "Mortal Kombat", nl: "De serie stond bekend om de 'brutality' moves, die meer gewelddadig en spectaculair waren dan de reguliere fatality's."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat heeft tientallen verschillende spelmodi, waaronder story-modes, toernooien, en online multiplayer."},
+      {category: "Mortal Kombat", nl: "De 'Kombat' in de naam is een referentie naar vechten, en het komt van het oorspronkelijke concept van het spel."},
+      {category: "Mortal Kombat", nl: "De serie bracht in 1995 een live-action film uit, die een cultklassieker werd."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat X introduceerde personages zoals Kotal Kahn en D'Vorah, die nieuwe speelstijlen brachten."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat 11 bracht de mogelijkheid om tijd te manipuleren, met het personage Kronika als nieuwe eindbaas."},
+      {category: "Mortal Kombat", nl: "In Mortal Kombat 3 werd het populaire personage 'Cyrax' geïntroduceerd."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat 9 was een volledige reboot van de serie en herintroduceerde oude personages zoals Kitana en Mileena."},
+      {category: "Mortal Kombat", nl: "Mortal Kombat 11 biedt de mogelijkheid om de tijdlijn te beïnvloeden en personages uit verschillende tijdperken te verzamelen."},
 
+      // Twilight Facts (Expanded)
+      {category: "Twilight", nl: "Twilight, geschreven door Stephenie Meyer, werd in 2005 gepubliceerd."},
+      {category: "Twilight", nl: "De boeken in de Twilight-serie zijn vertaald in meer dan 50 talen."},
+      {category: "Twilight", nl: "De hoofdpersonages, Bella Swan en Edward Cullen, werden gespeeld door Kristen Stewart en Robert Pattinson."},
+      {category: "Twilight", nl: "Twilight werd omgezet in een succesvolle filmserie die begon met de gelijknamige film in 2008."},
+      {category: "Twilight", nl: "De films uit de Twilight-serie bevatten iconische scènes zoals de 'Baseball Game' en de 'Cullen Family House'."},
+      {category: "Twilight", nl: "In de Twilight-boeken speelt de liefde tussen Bella en Edward zich af tegen een achtergrond van vampieren- en weerwolfontmoetingen."},
+      {category: "Twilight", nl: "De Twilight-boeken bevatten de mythe van de vampieren die zich kunnen transformeren en de kracht hebben om onsterfelijkheid te bereiken."},
+      {category: "Twilight", nl: "In de boeken wordt de liefde tussen Bella en Edward vaak gezien als een symbolische afspiegeling van de strijd tussen het goede en het kwade."},
+      {category: "Twilight", nl: "De film Twilight heeft een grote impact gehad op de popcultuur en heeft veel fans wereldwijd aangetrokken."},
+      {category: "Twilight", nl: "Kristen Stewart won de 'Best Actress' award op de Teen Choice Awards in 2009 voor haar rol als Bella Swan."},
+      {category: "Twilight", nl: "De films Twilight bevatten epische soundtracknummers, waaronder 'Decode' van Paramore."},
+      {category: "Twilight", nl: "Twilight bevat naast vampiers ook weerwolven die een belangrijke rol spelen in het verhaal."},
+      {category: "Twilight", nl: "De films bevatten enkele van de mooiste locaties, waaronder de iconische 'Cullen House' en het bos waar Bella en Edward hun eerste ontmoeting hadden."},
+      {category: "Twilight", nl: "De verfilming van Breaking Dawn was opgesplitst in twee delen, wat zorgt voor een episch einde aan de saga."},
+      {category: "Twilight", nl: "Het personage van Jacob Black werd gespeeld door Taylor Lautner, die zijn spieren trainde voor zijn rol."},
 
-    const facts = {};
-    baseFacts.forEach(f => {
-      if(!facts[f.category]) facts[f.category] = [];
-      facts[f.category].push(f.nl);
+      // Country Facts (Expanded)
+      {category: "Countries", nl: "Italië heeft 's werelds grootste aantal werelderfgoedlocaties, met meer dan 50."},
+      {category: "Countries", nl: "Noorwegen heeft 's werelds langste onderwater tunnel, de Lærdal-tunnel."},
+      {category: "Countries", nl: "Griekenland heeft de oudste democratie ter wereld, die bijna 2500 jaar geleden begon."},
+      {category: "Countries", nl: "Alaska heeft 17 van de 20 hoogste bergen in de VS, waaronder de Mount Denali."},
+      {category: "Countries", nl: "Ierland heeft een van de oudste universiteiten van Europa, de Universiteit van Dublin (Trinity College)."},
+      {category: "Countries", nl: "In Duitsland is de Autobahn beroemd voor het gedeelte zonder snelheidslimiet."},
+      {category: "Countries", nl: "Italië is de oorsprong van de pizza, en de oudste bekende pizzeria bevindt zich in Napels."},
+      {category: "Countries", nl: "Noorwegen heeft het hoogste niveau van levenskwaliteit ter wereld volgens verschillende ranglijsten."},
+      {category: "Countries", nl: "Griekenland heeft een rijke mythologie, met goden zoals Zeus en Poseidon."},
+      {category: "Countries", nl: "Alaska is beroemd om zijn indrukwekkende natuur, waaronder de Denali National Park & Preserve."},
+      {category: "Countries", nl: "Ierland heeft wereldwijd invloed gehad op literatuur, met schrijvers zoals James Joyce en Oscar Wilde."},
+      {category: "Countries", nl: "In Duitsland wordt jaarlijks het grootste bierfestival ter wereld gehouden, het Oktoberfest in München."},
+      {category: "Countries", nl: "Italië heeft 's werelds grootste producent van wijn, en wijn is een essentieel onderdeel van de cultuur."},
+      {category: "Countries", nl: "Noorwegen heeft prachtige fjorden die een van de meest iconische natuurwonderen van Europa zijn."},
+      {category: "Countries", nl: "In Griekenland bevinden zich enkele van de mooiste en oudste tempels van de westerse wereld."},
+      {category: "Countries", nl: "Alaska heeft een zeer lage bevolkingsdichtheid, wat het een van de minst bevolkte staten in de VS maakt."},
+      {category: "Countries", nl: "Ierland is beroemd om zijn prachtige groene heuvels, vandaar de bijnaam 'The Emerald Isle'."},
+      
+      // Continue adding more facts...
+    ];
+
+    let favoriteFacts = [];
+
+    // Function to display a fact
+    const displayFact = (fact) => {
+      const factElement = document.createElement("div");
+      factElement.classList.add("fact");
+      factElement.innerHTML = `
+        <p>${fact.nl}</p>
+        <button onclick="addFavoriteFact('${fact.nl}')">⭐ Voeg toe aan Favorieten</button>
+      `;
+      factContainer.appendChild(factElement);
+    };
+
+    // Function to add a fact to the favorites
+    const addFavoriteFact = (fact) => {
+      if (!favoriteFacts.includes(fact)) {
+        favoriteFacts.push(fact);
+        updateFavoriteList();
+      }
+    };
+
+    // Function to update the favorite list UI
+    const updateFavoriteList = () => {
+      favoriteList.innerHTML = favoriteFacts.map((fact) => `
+        <div class="favorite-item">${fact}</div>
+      `).join("");
+    };
+
+    // Function to export the favorites as a text file
+    const exportFavorites = () => {
+      const blob = new Blob([favoriteFacts.join("\n\n")], {type: "text/plain"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "favoriete_feiten.txt";
+      link.click();
+    };
+
+    // Event listeners for the buttons
+    oneBtn.addEventListener("click", () => {
+      factContainer.innerHTML = "";
+      const fact = baseFacts[Math.floor(Math.random() * baseFacts.length)];
+      displayFact(fact);
     });
 
-    function loadCategories() {
-      categoryFilter.innerHTML = '<option value="All">Alle Landen</option>';
-      Object.keys(facts).forEach(cat => {
-        const option = document.createElement("option");
-        option.value = cat;
-        option.textContent = cat;
-        categoryFilter.appendChild(option);
-      });
-    }
-
-    function getRandomFact() {
-      let chosenCategory = categoryFilter.value;
-      const keys = Object.keys(facts);
-      if(chosenCategory === "All") chosenCategory = keys[Math.floor(Math.random()*keys.length)];
-      const factList = facts[chosenCategory];
-      const fact = factList[Math.floor(Math.random()*factList.length)];
-      return {category:chosenCategory, fact};
-    }
-
-    function showFacts(count) {
+    fiveBtn.addEventListener("click", () => {
       factContainer.innerHTML = "";
-      for(let i=0;i<count;i++){
-        const {category,fact} = getRandomFact();
-        const factEl = document.createElement('div');
-        factEl.className='fact';
-        factEl.innerHTML=`<span>${category}: ${fact}</span>
-                          <button title="Opslaan als favoriet">⭐</button>`;
-        factEl.querySelector("button").addEventListener("click",()=>saveFavorite(`${category}: ${fact}`));
-        factContainer.appendChild(factEl);
+      for (let i = 0; i < 5; i++) {
+        const fact = baseFacts[Math.floor(Math.random() * baseFacts.length)];
+        displayFact(fact);
       }
-    }
+    });
 
-    function setActive(button){[oneBtn,fiveBtn,anotherBtn].forEach(btn=>btn.classList.remove('active'));button.classList.add('active');}
+    anotherBtn.addEventListener("click", () => {
+      factContainer.innerHTML = "";
+      const fact = baseFacts[Math.floor(Math.random() * baseFacts.length)];
+      displayFact(fact);
+    });
 
-    function saveFavorite(fact){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      if(!favorites.includes(fact)){favorites.push(fact);localStorage.setItem("favorites",JSON.stringify(favorites));renderFavorites();}
-    }
+    exportBtn.addEventListener("click", exportFavorites);
 
-    function removeFavorite(fact){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      favorites=favorites.filter(f=>f!==fact);
-      localStorage.setItem("favorites",JSON.stringify(favorites));
-      renderFavorites();
-    }
-
-    function renderFavorites(){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      favoriteList.innerHTML="";
-      favorites.forEach(fact=>{
-        const favEl=document.createElement("div");
-        favEl.className="favorite";
-        favEl.innerHTML=`<span>${fact}</span><button title="Verwijderen">✖</button>`;
-        favEl.querySelector("button").addEventListener("click",()=>removeFavorite(fact));
-        favoriteList.appendChild(favEl);
-      });
-    }
-
-    function exportFavorites(){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      if(favorites.length===0){alert("Geen favorieten om te exporteren!");return;}
-      const blob=new Blob([favorites.join("\n")],{type:"text/plain"});
-      const link=document.createElement("a");
-      link.href=URL.createObjectURL(blob);
-      link.download="favorieten.txt";
-      link.click();
-    }
-
-    oneBtn.addEventListener('click',()=>{showFacts(1);setActive(oneBtn);});
-    fiveBtn.addEventListener('click',()=>{showFacts(5);setActive(fiveBtn);});
-    anotherBtn.addEventListener('click',()=>{showFacts(1);setActive(anotherBtn);});
-    categoryFilter.addEventListener("change",()=>{showFacts(1);setActive(oneBtn);});
-    exportBtn.addEventListener("click",exportFavorites);
-    document.addEventListener('keydown',(e)=>{if(e.code==='Space'){e.preventDefault();showFacts(1);setActive(anotherBtn);}});
-
-    loadCategories();
-    renderFavorites();
-    showFacts(1);
-    setActive(oneBtn);
+    // Initialize with a random fact
+    anotherBtn.click();
   </script>
 </body>
 </html>
