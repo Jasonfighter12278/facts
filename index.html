@@ -1,93 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random Facts Twilight & Mortal Kombat</title>
+  <title>Willekeurige Landenfeiten</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #f5f5f5;
-      text-align: center;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    h1 { font-size: 2.5rem; margin-bottom: 15px; }
-    .controls {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;
-    }
-    .buttons button, select {
-      margin: 8px; padding: 10px 18px; border: none; border-radius: 12px;
-      cursor: pointer; font-size: 1rem; transition: all 0.25s ease;
-      background: #333; color: #fff;
-    }
-    .buttons button:hover, select:hover { transform: scale(1.05); background: #444; }
-    .buttons button.active { background: #ff9800; color: #000; box-shadow: 0 0 12px #ff9800; }
-    .fact {
-      margin: 14px auto; padding: 14px; background: #1e1e1e; border-radius: 12px;
-      max-width: 800px; font-size: 1.1rem; opacity: 0; transform: scale(0.95);
-      animation: popIn 0.4s forwards; line-height: 1.45; display: flex;
-      justify-content: space-between; align-items: center; gap: 10px;
-    }
-    .fact button {
-      margin-left: 10px; background: none; border: none; color: #ff9800;
-      font-size: 1.4rem; cursor: pointer; transition: transform 0.2s ease;
-    }
-    .fact button:hover { transform: scale(1.3); color: #ffc107; }
-    @keyframes popIn { to { opacity: 1; transform: scale(1); } }
-    #favorites { margin-top: 40px; text-align: left; max-width: 820px; margin-left: auto; margin-right: auto; }
-    #favorites h2 { font-size: 1.8rem; margin-bottom: 10px; text-align: center; }
-    #favorites button.export {
-      display: block; margin: 10px auto 20px; padding: 8px 14px;
-      background: #444; border: none; border-radius: 8px; cursor: pointer;
-      color: #fff; transition: all 0.2s ease;
-    }
-    #favorites button.export:hover { background: #666; transform: scale(1.05); }
-    .favorite {
-      background: #2a2a2a; margin: 8px 0; padding: 10px; border-radius: 10px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .favorite button {
-      background: none; border: none; color: #ff4d4d;
-      font-size: 1.2rem; cursor: pointer; transition: transform 0.2s ease;
-    }
-    .favorite button:hover { transform: scale(1.2); color: #ff6666; }
-    footer { margin-top: auto; padding: 15px; font-size: 0.9rem; color: #aaa; text-align: center; }
-    footer a { color: #ff9800; text-decoration: none; transition: color 0.2s ease; }
-    footer a:hover { color: #ffc107; }
+    body {font-family: Arial, sans-serif; background:#121212; color:#f5f5f5; text-align:center; padding:20px; display:flex; flex-direction:column; min-height:100vh;}
+    h1 {font-size:2.5rem; margin-bottom:15px;}
+    .controls {display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:15px;}
+    .buttons button, select {margin:8px; padding:10px 18px; border:none; border-radius:12px; cursor:pointer; font-size:1rem; transition:all 0.25s ease; background:#333; color:#fff;}
+    .buttons button:hover, select:hover {transform:scale(1.05); background:#444;}
+    .buttons button.active {background:#ff9800; color:#000; box-shadow:0 0 12px #ff9800;}
+    .fact {margin:14px auto; padding:14px; background:#1e1e1e; border-radius:12px; max-width:800px; font-size:1.1rem; opacity:0; transform:scale(0.95); animation:popIn 0.4s forwards; line-height:1.45; display:flex; justify-content:space-between; align-items:center; gap:10px;}
+    .fact button {margin-left:10px; background:none; border:none; color:#ff9800; font-size:1.4rem; cursor:pointer; transition:transform 0.2s ease;}
+    .fact button:hover {transform:scale(1.3); color:#ffc107;}
+    @keyframes popIn {to {opacity:1; transform:scale(1);}}
+    #favorites {margin-top:40px; text-align:left; max-width:820px; margin-left:auto; margin-right:auto;}
+    #favorites h2 {font-size:1.8rem; margin-bottom:10px; text-align:center;}
+    #favorites button.export {display:block; margin:10px auto 20px; padding:8px 14px; background:#444; border:none; border-radius:8px; cursor:pointer; color:#fff; transition:all 0.2s ease;}
+    #favorites button.export:hover {background:#666; transform:scale(1.05);}
+    .favorite {background:#2a2a2a; margin:8px 0; padding:10px; border-radius:10px; display:flex; justify-content:space-between; align-items:center;}
+    .favorite button {background:none; border:none; color:#ff4d4d; font-size:1.2rem; cursor:pointer; transition:transform 0.2s ease;}
+    .favorite button:hover {transform:scale(1.2); color:#ff6666;}
+    footer {margin-top:auto; padding:15px; font-size:0.9rem; color:#aaa; text-align:center;}
+    footer a {color:#ff9800; text-decoration:none; transition:color 0.2s ease;}
+    footer a:hover {color:#ffc107;}
   </style>
 </head>
 <body>
-  <h1>Twilight & Mortal Kombat Random Facts</h1>
+  <h1>🌍 Willekeurige Landenfeiten</h1>
 
   <div class="controls">
     <div class="buttons">
-      <button id="oneFact">1 Fact</button>
-      <button id="fiveFacts">5 Facts</button>
-      <button id="anotherFact">Another</button>
+      <button id="oneFact">1 Feit</button>
+      <button id="fiveFacts">5 Feiten</button>
+      <button id="anotherFact">Nog een</button>
     </div>
     <select id="categoryFilter">
-      <option value="All">All Categories</option>
-    </select>
-    <select id="languageChooser">
-      <option value="en">English 🇬🇧</option>
-      <option value="nl">Nederlands 🇳🇱</option>
+      <option value="All">Alle Landen</option>
     </select>
   </div>
 
   <div id="factContainer"></div>
 
   <div id="favorites">
-    <h2>⭐ Favorite Facts</h2>
-    <button class="export" id="exportFavorites">📂 Export Favorites</button>
+    <h2>⭐ Favoriete Feiten</h2>
+    <button class="export" id="exportFavorites">📂 Favorieten Exporteren</button>
     <div id="favoriteList"></div>
   </div>
 
   <footer>
-    <p>Only verified Twilight & Mortal Kombat facts. — <a href="#">Suggest a fact</a> | <a href="#">Export facts</a></p>
+    <p>Alleen geverifieerde landenfeiten.</p>
   </footer>
 
   <script>
@@ -96,172 +59,110 @@
     const fiveBtn = document.getElementById('fiveFacts');
     const anotherBtn = document.getElementById('anotherFact');
     const categoryFilter = document.getElementById('categoryFilter');
-    const languageChooser = document.getElementById('languageChooser');
     const favoriteList = document.getElementById('favoriteList');
     const exportBtn = document.getElementById('exportFavorites');
 
-    // 150 facts total: 75 Twilight + 75 Mortal Kombat.
-    // Each entry supplies an English text and a Dutch translation.
     const baseFacts = [
-      // ===== Twilight (75) =====
-      {category:"Twilight", en:"Stephenie Meyer wrote the Twilight Saga.", nl:"Stephenie Meyer schreef de Twilight-saga."},
-      {category:"Twilight", en:"Bella Swan is the main protagonist.", nl:"Bella Swan is de hoofdpersoon."},
-      {category:"Twilight", en:"Edward Cullen is a vampire.", nl:"Edward Cullen is een vampier."},
-      {category:"Twilight", en:"Jacob Black is a shape-shifter who turns into a wolf.", nl:"Jacob Black is een vormwisser die in een wolf verandert."},
-      {category:"Twilight", en:"The Cullens live in Forks, Washington.", nl:"De Cullens wonen in Forks, Washington."},
-      {category:"Twilight", en:"Bella moves from Phoenix, Arizona to Forks.", nl:"Bella verhuist van Phoenix, Arizona naar Forks."},
-      {category:"Twilight", en:"Edward can read minds, but not Bella’s at first.", nl:"Edward kan gedachten lezen, maar die van Bella eerst niet."},
-      {category:"Twilight", en:"Bella’s father is Charlie Swan, the police chief of Forks.", nl:"Bella’s vader is Charlie Swan, de politiechef van Forks."},
-      {category:"Twilight", en:"Carlisle Cullen is a doctor and the head of the Cullen family.", nl:"Carlisle Cullen is arts en het hoofd van de familie Cullen."},
-      {category:"Twilight", en:"Esme Cullen is Carlisle’s wife and acts as the family’s mother.", nl:"Esme Cullen is Carlisles vrouw en fungeert als de moeder van het gezin."},
-      {category:"Twilight", en:"Alice Cullen has visions of possible futures.", nl:"Alice Cullen heeft visioenen van mogelijke toekomsten."},
-      {category:"Twilight", en:"Jasper Hale can influence emotions.", nl:"Jasper Hale kan emoties beïnvloeden."},
-      {category:"Twilight", en:"Rosalie Hale is Emmett Cullen’s partner.", nl:"Rosalie Hale is de partner van Emmett Cullen."},
-      {category:"Twilight", en:"Emmett Cullen is known for his great physical strength.", nl:"Emmett Cullen staat bekend om zijn grote fysieke kracht."},
-      {category:"Twilight", en:"The Volturi are a powerful vampire coven based in Italy.", nl:"De Volturi zijn een machtige vampierencoven in Italië."},
-      {category:"Twilight", en:"Bella and Edward marry in Breaking Dawn.", nl:"Bella en Edward trouwen in Breaking Dawn."},
-      {category:"Twilight", en:"Bella becomes a vampire in Breaking Dawn.", nl:"Bella wordt een vampier in Breaking Dawn."},
-      {category:"Twilight", en:"Renesmee is Bella and Edward’s half-vampire daughter.", nl:"Renesmee is de half-vampierdochter van Bella en Edward."},
-      {category:"Twilight", en:"Renesmee grows unusually fast.", nl:"Renesmee groeit ongewoon snel."},
-      {category:"Twilight", en:"Sam Uley is the initial alpha of the Quileute wolf pack.", nl:"Sam Uley is de eerste alfa van de Quileute-wolvenroedel."},
-      {category:"Twilight", en:"The Quileute shapeshifters are not cursed; they protect their tribe.", nl:"De Quileute-vormwissers zijn niet vervloekt; ze beschermen hun stam."},
-      {category:"Twilight", en:"The Cullens call themselves ‘vegetarians’ because they drink animal blood.", nl:"De Cullens noemen zichzelf ‘vegetariërs’ omdat ze dierlijk bloed drinken."},
-      {category:"Twilight", en:"Victoria seeks revenge after the death of her mate James.", nl:"Victoria zoekt wraak na de dood van haar partner James."},
-      {category:"Twilight", en:"James is a tracker vampire who hunts Bella.", nl:"James is een spoorzoekende vampier die op Bella jaagt."},
-      {category:"Twilight", en:"Laurent is allied with James and Victoria early on.", nl:"Laurent is in het begin verbonden met James en Victoria."},
-      {category:"Twilight", en:"The Cullens play baseball during a thunderstorm to mask the sound.", nl:"De Cullens spelen honkbal tijdens een onweersbui om het geluid te maskeren."},
-      {category:"Twilight", en:"In the films, Edward composes Bella’s lullaby.", nl:"In de films componeert Edward Bella’s wiegelied."},
-      {category:"Twilight", en:"A treaty with the Quileute forbids the Cullens from biting humans.", nl:"Een verdrag met de Quileute verbiedt de Cullens om mensen te bijten."},
-      {category:"Twilight", en:"Jacob imprints on Renesmee.", nl:"Jacob imprint op Renesmee."},
-      {category:"Twilight", en:"The main books are Twilight, New Moon, Eclipse, and Breaking Dawn.", nl:"De hoofdboeken zijn Twilight, New Moon, Eclipse en Breaking Dawn."},
-      {category:"Twilight", en:"Midnight Sun retells Twilight from Edward’s perspective.", nl:"Midnight Sun vertelt Twilight opnieuw vanuit Edwards perspectief."},
-      {category:"Twilight", en:"Volturi leaders include Aro, Marcus, and Caius.", nl:"De leiders van de Volturi zijn onder meer Aro, Marcus en Caius."},
-      {category:"Twilight", en:"Jane can inflict pain with her power; Alec can numb senses.", nl:"Jane kan pijn veroorzaken met haar kracht; Alec kan zintuigen verdoven."},
-      {category:"Twilight", en:"As a vampire, Bella’s shield ability blocks many mental powers.", nl:"Als vampier blokkeert Bella’s schildkracht veel mentale gaven."},
-      {category:"Twilight", en:"Charlie later starts a relationship with Sue Clearwater.", nl:"Charlie begint later een relatie met Sue Clearwater."},
-      {category:"Twilight", en:"Leah Clearwater is the only known female shapeshifter in the pack.", nl:"Leah Clearwater is de enige bekende vrouwelijke vormwisser in de roedel."},
-      {category:"Twilight", en:"Seth Clearwater befriends the Cullens.", nl:"Seth Clearwater raakt bevriend met de Cullens."},
-      {category:"Twilight", en:"The Quileute wolves are much larger than natural wolves.", nl:"De Quileute-wolven zijn veel groter dan echte wolven."},
-      {category:"Twilight", en:"Alice and Jasper are not biological siblings; it’s a cover story.", nl:"Alice en Jasper zijn geen biologische broer en zus; het is een dekmantel."},
-      {category:"Twilight", en:"Rosalie carried Emmett to Carlisle so he could be turned.", nl:"Rosalie bracht Emmett naar Carlisle zodat hij veranderd kon worden."},
-      {category:"Twilight", en:"Carlisle was turned after being attacked while hunting vampires in London.", nl:"Carlisle werd veranderd nadat hij in Londen werd aangevallen tijdens de jacht op vampiers."},
-      {category:"Twilight", en:"The Cullens relocate often to hide that they do not age.", nl:"De Cullens verhuizen vaak om te verbergen dat ze niet ouder worden."},
-      {category:"Twilight", en:"In sunlight, Twilight vampires sparkle instead of burning.", nl:"In zonlicht glinsteren Twilight-vampiers in plaats van te verbranden."},
-      {category:"Twilight", en:"Quileute shapeshifters have high body temperatures.", nl:"Quileute-vormwissers hebben een hoge lichaamstemperatuur."},
-      {category:"Twilight", en:"Bella drives an old red Chevrolet pickup.", nl:"Bella rijdt in een oude rode Chevrolet-pick-up."},
-      {category:"Twilight", en:"Mike Newton is a classmate who likes Bella.", nl:"Mike Newton is een klasgenoot die Bella leuk vindt."},
-      {category:"Twilight", en:"Jessica Stanley is Bella’s classmate and friend.", nl:"Jessica Stanley is Bella’s klasgenoot en vriendin."},
-      {category:"Twilight", en:"Angela Weber is another friend of Bella at school.", nl:"Angela Weber is een andere vriendin van Bella op school."},
-      {category:"Twilight", en:"Newborn vampires are stronger than older vampires in this lore.", nl:"Pasgeboren vampiers zijn sterker dan oudere vampiers in deze lore."},
-      {category:"Twilight", en:"The Denali coven in Alaska is allied with the Cullens.", nl:"De Denali-coven in Alaska is een bondgenoot van de Cullens."},
-      {category:"Twilight", en:"Irina of the Denali coven mistakenly reports Renesmee to the Volturi.", nl:"Irina van de Denali-coven meldt Renesmee per ongeluk bij de Volturi."},
-      {category:"Twilight", en:"Members of the Denali coven include Tanya, Kate, Carmen, and Eleazar.", nl:"Leden van de Denali-coven zijn Tanya, Kate, Carmen en Eleazar."},
-      {category:"Twilight", en:"Kate can produce an electrical current; Eleazar senses abilities.", nl:"Kate kan een elektrische stroom opwekken; Eleazar voelt gaven aan."},
-      {category:"Twilight", en:"The Romanian coven—Stefan and Vladimir—oppose the Volturi.", nl:"De Roemeense coven—Stefan en Vladimir—verzet zich tegen de Volturi."},
-      {category:"Twilight", en:"Benjamin of the Egyptian coven can manipulate the elements.", nl:"Benjamin van de Egyptische coven kan de elementen manipuleren."},
-      {category:"Twilight", en:"Zafrina of the Amazon coven can cast powerful illusions.", nl:"Zafrina van de Amazone-coven kan krachtige illusies oproepen."},
-      {category:"Twilight", en:"Renesmee’s name blends Renee and Esme.", nl:"Renesmee’s naam combineert Renee en Esme."},
-      {category:"Twilight", en:"Bella and Edward honeymoon on Isle Esme.", nl:"Bella en Edward brengen hun huwelijksreis door op Isle Esme."},
-      {category:"Twilight", en:"Bella’s pregnancy is dangerous for her while she is still human.", nl:"Bella’s zwangerschap is gevaarlijk voor haar zolang ze nog mens is."},
-      {category:"Twilight", en:"Jacob forms a separate pack to protect Bella and the Cullens.", nl:"Jacob vormt een aparte roedel om Bella en de Cullens te beschermen."},
-      {category:"Twilight", en:"The Volturi confront the Cullens over Renesmee.", nl:"De Volturi confronteren de Cullens vanwege Renesmee."},
-      {category:"Twilight", en:"In the book’s finale, the conflict is resolved without a full battle.", nl:"In de boekenfinale wordt het conflict opgelost zonder een volledige veldslag."},
-      {category:"Twilight", en:"Renee is Bella’s mother; Phil Dwyer is her stepfather.", nl:"Renee is Bella’s moeder; Phil Dwyer is haar stiefvader."},
-      {category:"Twilight", en:"Quil Ateara is another member of the wolf pack who imprints.", nl:"Quil Ateara is een ander roedellid dat imprint."},
-      {category:"Twilight", en:"Paul Lahote is known for a quick temper.", nl:"Paul Lahote staat bekend om zijn korte lontje."},
-      {category:"Twilight", en:"Embry Call is close friends with Jacob.", nl:"Embry Call is een goede vriend van Jacob."},
-      {category:"Twilight", en:"Jared Cameron is among the early pack members.", nl:"Jared Cameron behoort tot de vroege roedelleden."},
-      {category:"Twilight", en:"Brady and Collin are younger wolves in the pack.", nl:"Brady en Collin zijn jongere wolven in de roedel."},
-      {category:"Twilight", en:"Many scenes were filmed in the Pacific Northwest and British Columbia.", nl:"Veel scènes zijn opgenomen in de Pacific Northwest en Brits-Columbia."},
-
-      // ===== Mortal Kombat (75) =====
-      {category:"Mortal Kombat", en:"Mortal Kombat was created by Ed Boon and John Tobias.", nl:"Mortal Kombat werd gemaakt door Ed Boon en John Tobias."},
-      {category:"Mortal Kombat", en:"The first game debuted in arcades in 1992.", nl:"Het eerste spel verscheen in arcades in 1992."},
-      {category:"Mortal Kombat", en:"The series is famous for its Fatalities.", nl:"De serie is beroemd om zijn Fatalities."},
-      {category:"Mortal Kombat", en:"Scorpion’s catchphrase is ‘Get over here!’.", nl:"Scorpions catchphrase is ‘Get over here!’."},
-      {category:"Mortal Kombat", en:"Scorpion’s real name is Hanzo Hasashi.", nl:"Scorpions echte naam is Hanzo Hasashi."},
-      {category:"Mortal Kombat", en:"Two brothers have used the name Sub-Zero: Bi-Han and Kuai Liang.", nl:"Twee broers gebruikten de naam Sub-Zero: Bi-Han en Kuai Liang."},
-      {category:"Mortal Kombat", en:"Liu Kang is often Earthrealm’s champion.", nl:"Liu Kang is vaak de kampioen van Earthrealm."},
-      {category:"Mortal Kombat", en:"Raiden is the God of Thunder and a protector of Earthrealm.", nl:"Raiden is de Dondergod en een beschermer van Earthrealm."},
-      {category:"Mortal Kombat", en:"Shang Tsung is a sorcerer who steals souls.", nl:"Shang Tsung is een tovenaar die zielen steelt."},
-      {category:"Mortal Kombat", en:"Goro is a four-armed Shokan warrior.", nl:"Goro is een Shokan-krijger met vier armen."},
-      {category:"Mortal Kombat", en:"Sonya Blade serves in Special Forces.", nl:"Sonya Blade dient bij de Special Forces."},
-      {category:"Mortal Kombat", en:"Johnny Cage is a Hollywood actor and skilled fighter.", nl:"Johnny Cage is een Hollywoodacteur en een vaardige vechter."},
-      {category:"Mortal Kombat", en:"Kano leads the Black Dragon criminal clan.", nl:"Kano leidt de criminele clan Black Dragon."},
-      {category:"Mortal Kombat", en:"Kitana is a princess of Edenia.", nl:"Kitana is een prinses van Edenia."},
-      {category:"Mortal Kombat", en:"Mileena is a clone of Kitana with Tarkatan traits.", nl:"Mileena is een kloon van Kitana met Tarkataanse kenmerken."},
-      {category:"Mortal Kombat", en:"Jax Briggs fights with bionic arms.", nl:"Jax Briggs vecht met bionische armen."},
-      {category:"Mortal Kombat", en:"Shao Kahn is a conquering emperor and major antagonist.", nl:"Shao Kahn is een veroverende keizer en grote antagonist."},
-      {category:"Mortal Kombat", en:"The Elder Gods oversee the realms.", nl:"De Elder Gods houden toezicht op de rijken."},
-      {category:"Mortal Kombat", en:"NetherRealm Studios develops modern entries in the series.", nl:"NetherRealm Studios ontwikkelt de moderne delen van de serie."},
-      {category:"Mortal Kombat", en:"Mortal Kombat (2011) served as a series reboot.", nl:"Mortal Kombat (2011) was een reboot van de serie."},
-      {category:"Mortal Kombat", en:"Mortal Kombat X introduced character variations.", nl:"Mortal Kombat X introduceerde karaktervariaties."},
-      {category:"Mortal Kombat", en:"Mortal Kombat 11 added Fatal Blows.", nl:"Mortal Kombat 11 voegde Fatal Blows toe."},
-      {category:"Mortal Kombat", en:"Realms include Earthrealm, Outworld, Netherrealm, Edenia, Orderrealm, and Chaosrealm.", nl:"Rijken omvatten Earthrealm, Outworld, Netherrealm, Edenia, Orderrealm en Chaosrealm."},
-      {category:"Mortal Kombat", en:"Quan Chi is a Netherrealm necromancer.", nl:"Quan Chi is een necromancer uit de Netherrealm."},
-      {category:"Mortal Kombat", en:"Noob Saibot is the wraith form of the original Sub-Zero, Bi-Han.", nl:"Noob Saibot is de wraakverschijning van de oorspronkelijke Sub-Zero, Bi-Han."},
-      {category:"Mortal Kombat", en:"Smoke has appeared as both human and cyborg in the series.", nl:"Smoke verscheen in de serie zowel als mens als als cyborg."},
-      {category:"Mortal Kombat", en:"Cyrax is a cyberized Lin Kuei warrior.", nl:"Cyrax is een gecybernetiseerde Lin Kuei-strijder."},
-      {category:"Mortal Kombat", en:"Sektor becomes the leader of the cyber Lin Kuei.", nl:"Sektor wordt de leider van de cyber Lin Kuei."},
-      {category:"Mortal Kombat", en:"Reptile is a Saurian who spits acid.", nl:"Reptile is een Saurian die zuur spuugt."},
-      {category:"Mortal Kombat", en:"Baraka is a Tarkatan warrior with arm blades.", nl:"Baraka is een Tarkataanse krijger met armmessen."},
-      {category:"Mortal Kombat", en:"Kabal is known for extreme speed and a respirator mask.", nl:"Kabal staat bekend om extreme snelheid en een ademhalingsmasker."},
-      {category:"Mortal Kombat", en:"Nightwolf is a shamanic protector of Earthrealm.", nl:"Nightwolf is een sjamanistische beschermer van Earthrealm."},
-      {category:"Mortal Kombat", en:"Sindel is Kitana’s mother and wields a sonic scream.", nl:"Sindel is Kitanas moeder en gebruikt een sonische schreeuw."},
-      {category:"Mortal Kombat", en:"Ermac is a fusion of many souls with telekinesis.", nl:"Ermac is een fusie van vele zielen met telekinese."},
-      {category:"Mortal Kombat", en:"Kenshi is a blind swordsman with telekinetic abilities.", nl:"Kenshi is een blinde zwaardvechter met telekinetische gaven."},
-      {category:"Mortal Kombat", en:"Bo’ Rai Cho mentors Liu Kang and others with drunken fist techniques.", nl:"Bo’ Rai Cho traint Liu Kang en anderen met dronken vuisttechnieken."},
-      {category:"Mortal Kombat", en:"Shinnok is a fallen Elder God.", nl:"Shinnok is een gevallen Elder God."},
-      {category:"Mortal Kombat", en:"Cassie Cage is the daughter of Sonya Blade and Johnny Cage.", nl:"Cassie Cage is de dochter van Sonya Blade en Johnny Cage."},
-      {category:"Mortal Kombat", en:"Jacqui Briggs is Jax’s daughter and a Special Forces fighter.", nl:"Jacqui Briggs is Jax’ dochter en een Special Forces-vechter."},
-      {category:"Mortal Kombat", en:"D’Vorah is an insectoid Kytinn who serves Outworld.", nl:"D’Vorah is een insectachtige Kytinn die Outworld dient."},
-      {category:"Mortal Kombat", en:"Geras is a construct who serves Kronika.", nl:"Geras is een construct dat Kronika dient."},
-      {category:"Mortal Kombat", en:"Kronika is the Keeper of Time in MK11.", nl:"Kronika is de Bewaarder van de Tijd in MK11."},
-      {category:"Mortal Kombat", en:"The Krypt is a mode where players unlock items.", nl:"The Krypt is een modus waarin spelers items vrijspelen."},
-      {category:"Mortal Kombat", en:"‘Test Your Might’ is a classic mini-game in the series.", nl:"‘Test Your Might’ is een klassieke minigame in de serie."},
-      {category:"Mortal Kombat", en:"Friendships and Babalities are humorous non-lethal finishers.", nl:"Friendships en Babalities zijn humoristische, niet-dodelijke afmakers."},
-      {category:"Mortal Kombat", en:"Animalities appeared in the MK3 era.", nl:"Animalities verschenen in het MK3-tijdperk."},
-      {category:"Mortal Kombat", en:"Controversy over MK’s violence helped spur the ESRB ratings system.", nl:"Controverse over MK’s geweld hielp het ESRB-classificatiesysteem te versnellen."},
-      {category:"Mortal Kombat", en:"The 1995 Mortal Kombat movie was directed by Paul W. S. Anderson.", nl:"De Mortal Kombat-film uit 1995 werd geregisseerd door Paul W. S. Anderson."},
-      {category:"Mortal Kombat", en:"The energetic theme ‘Techno Syndrome’ is closely associated with the franchise.", nl:"Het energieke nummer ‘Techno Syndrome’ is nauw met de franchise verbonden."},
-      {category:"Mortal Kombat", en:"A 2021 film reboot of Mortal Kombat was released by Warner Bros.", nl:"In 2021 bracht Warner Bros. een filmreboot van Mortal Kombat uit."},
-      {category:"Mortal Kombat", en:"Early games used digitized actors for sprites.", nl:"Vroege spellen gebruikten gedigitaliseerde acteurs voor sprites."},
-      {category:"Mortal Kombat", en:"The ‘Toasty!’ easter egg features sound designer Dan Forden.", nl:"De ‘Toasty!’-easter egg toont geluidsontwerper Dan Forden."},
-      {category:"Mortal Kombat", en:"Kung Lao is a Shaolin monk who fights with a bladed hat.", nl:"Kung Lao is een Shaolin-monnik die vecht met een hoed met mesrand."},
-      {category:"Mortal Kombat", en:"The Great Kung Lao once lost to Goro in a historic tournament.", nl:"De Grote Kung Lao verloor ooit van Goro in een historisch toernooi."},
-      {category:"Mortal Kombat", en:"The first tournament takes place on Shang Tsung’s island.", nl:"Het eerste toernooi vindt plaats op Shang Tsungs eiland."},
-      {category:"Mortal Kombat", en:"In MK3 era, the Lin Kuei forcibly automated some warriors.", nl:"In de MK3-periode automatiseerde de Lin Kuei sommige krijgers gedwongen."},
-      {category:"Mortal Kombat", en:"Tanya is an Edenian who often betrays allies.", nl:"Tanya is een Edeniaan die vaak bondgenoten verraadt."},
-      {category:"Mortal Kombat", en:"Rain is a purple-ninja Edenian prince in some timelines.", nl:"Rain is een paarse ninja en in sommige tijdlijnen een Edeniaanse prins."},
-      {category:"Mortal Kombat", en:"Jade is Kitana’s close friend and a deadly assassin.", nl:"Jade is Kitanas goede vriendin en een dodelijke huurmoordenaar."},
-      {category:"Mortal Kombat", en:"Sheeva is a female Shokan warrior.", nl:"Sheeva is een vrouwelijke Shokan-krijger."},
-      {category:"Mortal Kombat", en:"Motaro is a Centaurian sub-boss with a tail.", nl:"Motaro is een Centauriaanse subbaas met een staart."},
-      {category:"Mortal Kombat", en:"Blaze is a fire elemental central to Armageddon’s story.", nl:"Blaze is een vuurelementaal die centraal staat in het verhaal van Armageddon."},
-      {category:"Mortal Kombat", en:"Deadly Alliance teamed Shang Tsung with Quan Chi.", nl:"In Deadly Alliance sloegen Shang Tsung en Quan Chi de handen ineen."},
-      {category:"Mortal Kombat", en:"Deception features Onaga, the Dragon King, as the main villain.", nl:"Deception heeft Onaga, de Drakenkoning, als hoofdschurk."},
-      {category:"Mortal Kombat", en:"Armageddon included nearly every character and a create-a-fighter mode.", nl:"Armageddon bevatte bijna elk personage en een maak-je-eigen-vechter-modus."},
-      {category:"Mortal Kombat", en:"The series stylizes many C words with a K, like ‘Kombat’.", nl:"De serie vervangt vaak de C door een K, zoals in ‘Kombat’."},
-      {category:"Mortal Kombat", en:"Brutalities returned as finishers in Mortal Kombat X.", nl:"Brutalities keerden terug als afmakers in Mortal Kombat X."},
-      {category:"Mortal Kombat", en:"Kollector is a six-armed Naknadan from Outworld in MK11.", nl:"Kollector is een zesarmige Naknadaan uit Outworld in MK11."},
-      {category:"Mortal Kombat", en:"Cetrion is an Elder God aligned with nature in MK11.", nl:"Cetrion is een Elder God verbonden met de natuur in MK11."},
-      {category:"Mortal Kombat", en:"Sareena is a Netherrealm demon who sometimes aids Earthrealm.", nl:"Sareena is een demon uit de Netherrealm die Earthrealm soms helpt."},
-      {category:"Mortal Kombat", en:"Frost trained under Sub-Zero as a Lin Kuei prodigy.", nl:"Frost trainde onder Sub-Zero als een Lin Kuei-wonderkind."},
-      {category:"Mortal Kombat", en:"Erron Black is a gunslinger from Earthrealm who works in Outworld.", nl:"Erron Black is een revolverheld uit Earthrealm die in Outworld werkt."},
-      {category:"Mortal Kombat", en:"Ferra/Torr fight as a duo in Mortal Kombat X.", nl:"Ferra/Torr vechten als duo in Mortal Kombat X."},
-      {category:"Mortal Kombat", en:"Ashrah is a demon seeking purification and redemption.", nl:"Ashrah is een demon die zuivering en verlossing zoekt."},
-      {category:"Mortal Kombat", en:"Mortal Kombat 1 (2023) presents a new timeline forged by Fire God Liu Kang.", nl:"Mortal Kombat 1 (2023) presenteert een nieuwe tijdlijn, gesmeed door Vuurgod Liu Kang."}
+      {category:"Nederland", nl:"Nederland staat bekend om zijn windmolens."},
+      {category:"Nederland", nl:"Amsterdam heeft meer fietsen dan inwoners."},
+      {category:"Nederland", nl:"Nederlanders zijn gemiddeld de langste mensen ter wereld."},
+      {category:"Nederland", nl:"Tulpen zijn een nationaal symbool."},
+      {category:"Nederland", nl:"Meer dan een kwart van Nederland ligt onder zeeniveau."},
+      {category:"Nederland", nl:"Nederland was het eerste land dat het homohuwelijk legaliseerde in 2001."},
+      {category:"Nederland", nl:"Nederlandse schilders zoals Rembrandt en Van Gogh zijn wereldberoemd."},
+      {category:"Nederland", nl:"Nederland exporteert meer bloemen dan elk ander land."},
+      {category:"Nederland", nl:"De koninklijke familie behoort tot het Huis van Oranje."},
+      {category:"Nederland", nl:"Nederlanders eten gemiddeld 14 kilo kaas per persoon per jaar."},
+      {category:"Frankrijk", nl:"Frankrijk is het meest bezochte land ter wereld."},
+      {category:"Frankrijk", nl:"De Eiffeltoren werd gebouwd in 1889."},
+      {category:"Frankrijk", nl:"De Franse Revolutie begon in 1789."},
+      {category:"Frankrijk", nl:"Het Louvre is het grootste kunstmuseum ter wereld."},
+      {category:"Frankrijk", nl:"De Franse keuken is UNESCO-cultureel erfgoed."},
+      {category:"Frankrijk", nl:"De Tour de France is de beroemdste wielerwedstrijd ter wereld."},
+      {category:"Frankrijk", nl:"Camembert, Brie en Roquefort zijn beroemde Franse kazen."},
+      {category:"Frankrijk", nl:"Het Paleis van Versailles heeft 2.300 kamers."},
+      {category:"Frankrijk", nl:"Frankrijk deelt grenzen met 8 landen."},
+      {category:"Frankrijk", nl:"Het stokbrood is een Frans cultureel icoon."},
+      {category:"Duitsland", nl:"Berlijn heeft meer bruggen dan Venetië."},
+      {category:"Duitsland", nl:"De Duitse Autobahn heeft stukken zonder snelheidslimiet."},
+      {category:"Duitsland", nl:"Oktoberfest is 's werelds grootste bierfestival."},
+      {category:"Duitsland", nl:"Berlijn is de hoofdstad van Duitsland."},
+      {category:"Duitsland", nl:"Duitsland is beroemd om zijn auto-industrie, zoals BMW en Mercedes."},
+      {category:"Duitsland", nl:"Het Brandenburger Tor is een beroemd monument in Berlijn."},
+      {category:"Duitsland", nl:"Duitsland heeft meer dan 1.500 kastelen."},
+      {category:"Duitsland", nl:"Duitse bierwetten bestaan sinds 1516."},
+      {category:"Duitsland", nl:"De Neuschwanstein-burcht inspireerde Disney's kasteel."},
+      {category:"Duitsland", nl:"Duitsland is het grootste economie van Europa."},
+      {category:"Italië", nl:"Rome is de hoofdstad van Italië."},
+      {category:"Italië", nl:"Italië staat bekend om pizza en pasta."},
+      {category:"Italië", nl:"De Colosseum in Rome is een van de wereldwonderen."},
+      {category:"Italië", nl:"Venetië staat bekend om zijn kanalen en gondels."},
+      {category:"Italië", nl:"Italië heeft meer UNESCO-werelderfgoederen dan elk ander land."},
+      {category:"Italië", nl:"De Fiat is een beroemde Italiaanse auto."},
+      {category:"Italië", nl:"Italië produceert beroemde wijnen zoals Chianti en Barolo."},
+      {category:"Italië", nl:"Milaan is de modehoofdstad van Italië."},
+      {category:"Italië", nl:"Italië heeft de Vaticaanstad binnen zijn grenzen."},
+      {category:"Italië", nl:"Het carnaval van Venetië is wereldwijd beroemd."},
+      {category:"Zwitserland", nl:"Zwitserland is beroemd om zijn horloges en chocolade."},
+      {category:"Zwitserland", nl:"Het land heeft vier officiële talen."},
+      {category:"Zwitserland", nl:"Zwitserland is neutraal in oorlogen."},
+      {category:"Zwitserland", nl:"De Matterhorn is een beroemde berg in Zwitserland."},
+      {category:"Zwitserland", nl:"Zwitserland staat bekend om zijn banken."},
+      {category:"Zwitserland", nl:"Zwitserland heeft geen hoofdstad met wetgevende macht, maar Bern wordt vaak de hoofdstad genoemd."},
+      {category:"Zwitserland", nl:"Het land heeft het hoogste aantal kabelbanen per inwoner."},
+      {category:"Zwitserland", nl:"Fondue is een traditioneel Zwitsers gerecht."},
+      {category:"Zwitserland", nl:"Zwitserland heeft een van de hoogste levensverwachtingen ter wereld."},
+      {category:"Zwitserland", nl:"Het Zwitsers Rode Kruis is internationaal beroemd."},
+      {category:"Oostenrijk", nl:"Wenen is de hoofdstad van Oostenrijk."},
+      {category:"Oostenrijk", nl:"Oostenrijk staat bekend om klassieke muziek en Mozart."},
+      {category:"Oostenrijk", nl:"De Alpen bedekken meer dan 60% van Oostenrijk."},
+      {category:"Oostenrijk", nl:"Salzburg is de geboorteplaats van Mozart."},
+      {category:"Oostenrijk", nl:"Oostenrijk heeft beroemde skigebieden."},
+      {category:"Oostenrijk", nl:"Het land produceert beroemde wijnen en schnaps."},
+      {category:"Oostenrijk", nl:"Het Schönbrunn-paleis is een bekend paleis in Wenen."},
+      {category:"Oostenrijk", nl:"Het is een parlementaire republiek."},
+      {category:"Oostenrijk", nl:"De Oostenrijkse keuken staat bekend om Wiener Schnitzel."},
+      {category:"Oostenrijk", nl:"Het land grenst aan 8 andere landen."},
+      {category:"Alaska", nl:"Alaska is de grootste staat van de VS."},
+      {category:"Alaska", nl:"De staat heeft meer dan 3 miljoen meren."},
+      {category:"Alaska", nl:"Mount Denali is de hoogste berg van Noord-Amerika."},
+      {category:"Alaska", nl:"Alaska heeft een zeer lage bevolkingsdichtheid."},
+      {category:"Alaska", nl:"Het staat bekend om zijn wilde dieren zoals beren en elanden."},
+      {category:"Alaska", nl:"Alaska werd gekocht van Rusland in 1867."},
+      {category:"Alaska", nl:"De noordpoolcirkel loopt door Alaska."},
+      {category:"Alaska", nl:"De aurora borealis is vaak zichtbaar in Alaska."},
+      {category:"Alaska", nl:"Het staat heeft veel gletsjers en fjorden."},
+      {category:"Alaska", nl:"Alaska heeft een rijke goudmijnhistorie."},
+      {category:"Zweden", nl:"Zweden staat bekend om Ikea en Volvo."},
+      {category:"Zweden", nl:"Stockholm is de hoofdstad van Zweden."},
+      {category:"Zweden", nl:"Zweden heeft een van de hoogste levensstandaarden ter wereld."},
+      {category:"Zweden", nl:"Het land heeft duizenden meren en eilanden."},
+      {category:"Zweden", nl:"ABBA is een beroemde Zweedse band."},
+      {category:"Zweden", nl:"Zweedse kaas en vleeswaren zijn populair."},
+      {category:"Zweden", nl:"Het land is beroemd om zijn midzomervieringen."},
+      {category:"Zweden", nl:"Het Nobelprijsinstituut is gevestigd in Stockholm."},
+      {category:"Zweden", nl:"Ikea komt oorspronkelijk uit Zweden."},
+      {category:"Zweden", nl:"Zweedse bossen bedekken ongeveer 69% van het land."},
+      {category:"IJsland", nl:"IJsland heeft veel actieve vulkanen."},
+      {category:"IJsland", nl:"Reykjavik is de noordelijkste hoofdstad ter wereld."},
+      {category:"IJsland", nl:"IJsland produceert bijna al zijn energie uit hernieuwbare bronnen."},
+      {category:"IJsland", nl:"De Blue Lagoon is een beroemd geothermaal bad."},
+      {category:"IJsland", nl:"IJsland heeft een kleine bevolking, ongeveer 370.000."},
+      {category:"IJsland", nl:"IJslandse paarden zijn een unieke ras."},
+      {category:"IJsland", nl:"Het land is bekend om zijn noorderlicht."},
+      {category:"IJsland", nl:"IJsland heeft geen bosrijke gebieden zoals andere landen."},
+      {category:"IJsland", nl:"IJsland was het eerste land dat het vrouwenkiesrecht gaf in 1915."}
     ];
 
-    // Build the facts object by language & category from the bilingual base list
-    const facts = { en: {"Twilight": [], "Mortal Kombat": []}, nl: {"Twilight": [], "Mortal Kombat": []} };
+    const facts = {};
     baseFacts.forEach(f => {
-      facts.en[f.category].push(f.en);
-      facts.nl[f.category].push(f.nl);
+      if(!facts[f.category]) facts[f.category] = [];
+      facts[f.category].push(f.nl);
     });
 
     function loadCategories() {
-      categoryFilter.innerHTML = '<option value="All">All Categories</option>';
-      Object.keys(facts[languageChooser.value]).forEach(cat => {
+      categoryFilter.innerHTML = '<option value="All">Alle Landen</option>';
+      Object.keys(facts).forEach(cat => {
         const option = document.createElement("option");
         option.value = cat;
         option.textContent = cat;
@@ -270,86 +171,69 @@
     }
 
     function getRandomFact() {
-      const lang = languageChooser.value;
       let chosenCategory = categoryFilter.value;
-      const keys = Object.keys(facts[lang]);
-      if (chosenCategory === "All") {
-        chosenCategory = keys[Math.floor(Math.random() * keys.length)];
-      }
-      const factList = facts[lang][chosenCategory];
-      const fact = factList[Math.floor(Math.random() * factList.length)];
-      return { category: chosenCategory, fact };
+      const keys = Object.keys(facts);
+      if(chosenCategory === "All") chosenCategory = keys[Math.floor(Math.random()*keys.length)];
+      const factList = facts[chosenCategory];
+      const fact = factList[Math.floor(Math.random()*factList.length)];
+      return {category:chosenCategory, fact};
     }
 
     function showFacts(count) {
       factContainer.innerHTML = "";
-      for (let i = 0; i < count; i++) {
-        const { category, fact } = getRandomFact();
+      for(let i=0;i<count;i++){
+        const {category,fact} = getRandomFact();
         const factEl = document.createElement('div');
-        factEl.className = 'fact';
-        factEl.innerHTML = `<span>${category}: ${fact}</span>
-                            <button title="Save to favorites">⭐</button>`;
-        factEl.querySelector("button").addEventListener("click", () => saveFavorite(`${category}: ${fact}`));
+        factEl.className='fact';
+        factEl.innerHTML=`<span>${category}: ${fact}</span>
+                          <button title="Opslaan als favoriet">⭐</button>`;
+        factEl.querySelector("button").addEventListener("click",()=>saveFavorite(`${category}: ${fact}`));
         factContainer.appendChild(factEl);
       }
     }
 
-    function setActive(button) {
-      [oneBtn, fiveBtn, anotherBtn].forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+    function setActive(button){[oneBtn,fiveBtn,anotherBtn].forEach(btn=>btn.classList.remove('active'));button.classList.add('active');}
+
+    function saveFavorite(fact){
+      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
+      if(!favorites.includes(fact)){favorites.push(fact);localStorage.setItem("favorites",JSON.stringify(favorites));renderFavorites();}
     }
 
-    function saveFavorite(fact) {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      if (!favorites.includes(fact)) {
-        favorites.push(fact);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-        renderFavorites();
-      }
-    }
-
-    function removeFavorite(fact) {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      favorites = favorites.filter(f => f !== fact);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+    function removeFavorite(fact){
+      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
+      favorites=favorites.filter(f=>f!==fact);
+      localStorage.setItem("favorites",JSON.stringify(favorites));
       renderFavorites();
     }
 
-    function renderFavorites() {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      favoriteList.innerHTML = "";
-      favorites.forEach(fact => {
-        const favEl = document.createElement("div");
-        favEl.className = "favorite";
-        favEl.innerHTML = `<span>${fact}</span>
-                           <button title="Remove">✖</button>`;
-        favEl.querySelector("button").addEventListener("click", () => removeFavorite(fact));
+    function renderFavorites(){
+      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
+      favoriteList.innerHTML="";
+      favorites.forEach(fact=>{
+        const favEl=document.createElement("div");
+        favEl.className="favorite";
+        favEl.innerHTML=`<span>${fact}</span><button title="Verwijderen">✖</button>`;
+        favEl.querySelector("button").addEventListener("click",()=>removeFavorite(fact));
         favoriteList.appendChild(favEl);
       });
     }
 
-    function exportFavorites() {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      if (favorites.length === 0) {
-        alert("No favorites to export!");
-        return;
-      }
-      const blob = new Blob([favorites.join("\n")], { type: "text/plain" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "favorites.txt";
+    function exportFavorites(){
+      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
+      if(favorites.length===0){alert("Geen favorieten om te exporteren!");return;}
+      const blob=new Blob([favorites.join("\n")],{type:"text/plain"});
+      const link=document.createElement("a");
+      link.href=URL.createObjectURL(blob);
+      link.download="favorieten.txt";
       link.click();
     }
 
-    oneBtn.addEventListener('click', () => { showFacts(1); setActive(oneBtn); });
-    fiveBtn.addEventListener('click', () => { showFacts(5); setActive(fiveBtn); });
-    anotherBtn.addEventListener('click', () => { showFacts(1); setActive(anotherBtn); });
-    categoryFilter.addEventListener("change", () => { showFacts(1); setActive(oneBtn); });
-    languageChooser.addEventListener("change", () => { loadCategories(); showFacts(1); setActive(oneBtn); });
-    document.addEventListener('keydown', (e) => {
-      if (e.code === 'Space') { e.preventDefault(); showFacts(1); setActive(anotherBtn); }
-    });
-    exportBtn.addEventListener("click", exportFavorites);
+    oneBtn.addEventListener('click',()=>{showFacts(1);setActive(oneBtn);});
+    fiveBtn.addEventListener('click',()=>{showFacts(5);setActive(fiveBtn);});
+    anotherBtn.addEventListener('click',()=>{showFacts(1);setActive(anotherBtn);});
+    categoryFilter.addEventListener("change",()=>{showFacts(1);setActive(oneBtn);});
+    exportBtn.addEventListener("click",exportFavorites);
+    document.addEventListener('keydown',(e)=>{if(e.code==='Space'){e.preventDefault();showFacts(1);setActive(anotherBtn);}});
 
     loadCategories();
     renderFavorites();
