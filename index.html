@@ -63,182 +63,70 @@
     const exportBtn = document.getElementById('exportFavorites');
 
     const baseFacts = [
-      {category:"Nederland", nl:"Nederland staat bekend om zijn windmolens."},
-      {category:"Nederland", nl:"Amsterdam heeft meer fietsen dan inwoners."},
-      {category:"Nederland", nl:"Nederlanders zijn gemiddeld de langste mensen ter wereld."},
-      {category:"Nederland", nl:"Tulpen zijn een nationaal symbool."},
-      {category:"Nederland", nl:"Meer dan een kwart van Nederland ligt onder zeeniveau."},
-      {category:"Nederland", nl:"Nederland was het eerste land dat het homohuwelijk legaliseerde in 2001."},
-      {category:"Nederland", nl:"Nederlandse schilders zoals Rembrandt en Van Gogh zijn wereldberoemd."},
-      {category:"Nederland", nl:"Nederland exporteert meer bloemen dan elk ander land."},
-      {category:"Nederland", nl:"De koninklijke familie behoort tot het Huis van Oranje."},
-      {category:"Nederland", nl:"Nederlanders eten gemiddeld 14 kilo kaas per persoon per jaar."},
-      {category:"Frankrijk", nl:"Frankrijk is het meest bezochte land ter wereld."},
-      {category:"Frankrijk", nl:"De Eiffeltoren werd gebouwd in 1889."},
-      {category:"Frankrijk", nl:"De Franse Revolutie begon in 1789."},
-      {category:"Frankrijk", nl:"Het Louvre is het grootste kunstmuseum ter wereld."},
-      {category:"Frankrijk", nl:"De Franse keuken is UNESCO-cultureel erfgoed."},
-      {category:"Frankrijk", nl:"De Tour de France is de beroemdste wielerwedstrijd ter wereld."},
-      {category:"Frankrijk", nl:"Camembert, Brie en Roquefort zijn beroemde Franse kazen."},
-      {category:"Frankrijk", nl:"Het Paleis van Versailles heeft 2.300 kamers."},
-      {category:"Frankrijk", nl:"Frankrijk deelt grenzen met 8 landen."},
-      {category:"Frankrijk", nl:"Het stokbrood is een Frans cultureel icoon."},
-      {category:"Duitsland", nl:"Berlijn heeft meer bruggen dan Venetië."},
-      {category:"Duitsland", nl:"De Duitse Autobahn heeft stukken zonder snelheidslimiet."},
-      {category:"Duitsland", nl:"Oktoberfest is 's werelds grootste bierfestival."},
-      {category:"Duitsland", nl:"Berlijn is de hoofdstad van Duitsland."},
-      {category:"Duitsland", nl:"Duitsland is beroemd om zijn auto-industrie, zoals BMW en Mercedes."},
-      {category:"Duitsland", nl:"Het Brandenburger Tor is een beroemd monument in Berlijn."},
-      {category:"Duitsland", nl:"Duitsland heeft meer dan 1.500 kastelen."},
-      {category:"Duitsland", nl:"Duitse bierwetten bestaan sinds 1516."},
-      {category:"Duitsland", nl:"De Neuschwanstein-burcht inspireerde Disney's kasteel."},
-      {category:"Duitsland", nl:"Duitsland is het grootste economie van Europa."},
-      {category:"Italië", nl:"Rome is de hoofdstad van Italië."},
-      {category:"Italië", nl:"Italië staat bekend om pizza en pasta."},
-      {category:"Italië", nl:"De Colosseum in Rome is een van de wereldwonderen."},
-      {category:"Italië", nl:"Venetië staat bekend om zijn kanalen en gondels."},
-      {category:"Italië", nl:"Italië heeft meer UNESCO-werelderfgoederen dan elk ander land."},
-      {category:"Italië", nl:"De Fiat is een beroemde Italiaanse auto."},
-      {category:"Italië", nl:"Italië produceert beroemde wijnen zoals Chianti en Barolo."},
-      {category:"Italië", nl:"Milaan is de modehoofdstad van Italië."},
-      {category:"Italië", nl:"Italië heeft de Vaticaanstad binnen zijn grenzen."},
-      {category:"Italië", nl:"Het carnaval van Venetië is wereldwijd beroemd."},
-      {category:"Zwitserland", nl:"Zwitserland is beroemd om zijn horloges en chocolade."},
-      {category:"Zwitserland", nl:"Het land heeft vier officiële talen."},
-      {category:"Zwitserland", nl:"Zwitserland is neutraal in oorlogen."},
-      {category:"Zwitserland", nl:"De Matterhorn is een beroemde berg in Zwitserland."},
-      {category:"Zwitserland", nl:"Zwitserland staat bekend om zijn banken."},
-      {category:"Zwitserland", nl:"Zwitserland heeft geen hoofdstad met wetgevende macht, maar Bern wordt vaak de hoofdstad genoemd."},
-      {category:"Zwitserland", nl:"Het land heeft het hoogste aantal kabelbanen per inwoner."},
-      {category:"Zwitserland", nl:"Fondue is een traditioneel Zwitsers gerecht."},
-      {category:"Zwitserland", nl:"Zwitserland heeft een van de hoogste levensverwachtingen ter wereld."},
-      {category:"Zwitserland", nl:"Het Zwitsers Rode Kruis is internationaal beroemd."},
-      {category:"Oostenrijk", nl:"Wenen is de hoofdstad van Oostenrijk."},
-      {category:"Oostenrijk", nl:"Oostenrijk staat bekend om klassieke muziek en Mozart."},
-      {category:"Oostenrijk", nl:"De Alpen bedekken meer dan 60% van Oostenrijk."},
-      {category:"Oostenrijk", nl:"Salzburg is de geboorteplaats van Mozart."},
-      {category:"Oostenrijk", nl:"Oostenrijk heeft beroemde skigebieden."},
-      {category:"Oostenrijk", nl:"Het land produceert beroemde wijnen en schnaps."},
-      {category:"Oostenrijk", nl:"Het Schönbrunn-paleis is een bekend paleis in Wenen."},
-      {category:"Oostenrijk", nl:"Het is een parlementaire republiek."},
-      {category:"Oostenrijk", nl:"De Oostenrijkse keuken staat bekend om Wiener Schnitzel."},
-      {category:"Oostenrijk", nl:"Het land grenst aan 8 andere landen."},
-      {category:"Alaska", nl:"Alaska is de grootste staat van de VS."},
-      {category:"Alaska", nl:"De staat heeft meer dan 3 miljoen meren."},
-      {category:"Alaska", nl:"Mount Denali is de hoogste berg van Noord-Amerika."},
-      {category:"Alaska", nl:"Alaska heeft een zeer lage bevolkingsdichtheid."},
-      {category:"Alaska", nl:"Het staat bekend om zijn wilde dieren zoals beren en elanden."},
-      {category:"Alaska", nl:"Alaska werd gekocht van Rusland in 1867."},
-      {category:"Alaska", nl:"De noordpoolcirkel loopt door Alaska."},
-      {category:"Alaska", nl:"De aurora borealis is vaak zichtbaar in Alaska."},
-      {category:"Alaska", nl:"Het staat heeft veel gletsjers en fjorden."},
-      {category:"Alaska", nl:"Alaska heeft een rijke goudmijnhistorie."},
-      {category:"Zweden", nl:"Zweden staat bekend om Ikea en Volvo."},
-      {category:"Zweden", nl:"Stockholm is de hoofdstad van Zweden."},
-      {category:"Zweden", nl:"Zweden heeft een van de hoogste levensstandaarden ter wereld."},
-      {category:"Zweden", nl:"Het land heeft duizenden meren en eilanden."},
-      {category:"Zweden", nl:"ABBA is een beroemde Zweedse band."},
-      {category:"Zweden", nl:"Zweedse kaas en vleeswaren zijn populair."},
-      {category:"Zweden", nl:"Het land is beroemd om zijn midzomervieringen."},
-      {category:"Zweden", nl:"Het Nobelprijsinstituut is gevestigd in Stockholm."},
-      {category:"Zweden", nl:"Ikea komt oorspronkelijk uit Zweden."},
-      {category:"Zweden", nl:"Zweedse bossen bedekken ongeveer 69% van het land."},
-      {category:"IJsland", nl:"IJsland heeft veel actieve vulkanen."},
-      {category:"IJsland", nl:"Reykjavik is de noordelijkste hoofdstad ter wereld."},
-      {category:"IJsland", nl:"IJsland produceert bijna al zijn energie uit hernieuwbare bronnen."},
-      {category:"IJsland", nl:"De Blue Lagoon is een beroemd geothermaal bad."},
-      {category:"IJsland", nl:"IJsland heeft een kleine bevolking, ongeveer 370.000."},
-      {category:"IJsland", nl:"IJslandse paarden zijn een unieke ras."},
-      {category:"IJsland", nl:"Het land is bekend om zijn noorderlicht."},
-      {category:"IJsland", nl:"IJsland heeft geen bosrijke gebieden zoals andere landen."},
-      {category:"IJsland", nl:"IJsland was het eerste land dat het vrouwenkiesrecht gaf in 1915."}
+      // Griekenland
+      {category:"Griekenland", nl:"Griekenland heeft meer dan 6.000 eilanden, waarvan er ongeveer 227 bewoond zijn."},
+      {category:"Griekenland", nl:"Athene is de oudste stad van Europa, met een geschiedenis van meer dan 3.400 jaar."},
+      {category:"Griekenland", nl:"De beroemde Griekse filosofen Socrates, Plato en Aristoteles kwamen uit Griekenland."},
+      {category:"Griekenland", nl:"De Griekse keuken is wereldwijd bekend, met gerechten zoals moussaka en tzatziki."},
+      {category:"Griekenland", nl:"De Olympische Spelen komen oorspronkelijk uit Griekenland, waar ze voor het eerst werden gehouden in 776 v.Chr."},
+      {category:"Griekenland", nl:"Griekenland heeft 18 UNESCO Werelderfgoederen."},
+      {category:"Griekenland", nl:"De Griekse mythologie is een belangrijk onderdeel van de westerse literatuur."},
+      {category:"Griekenland", nl:"De Grieken waren de eersten die de democratie uitvonden."},
+      {category:"Griekenland", nl:"De Griekse stadstaat Sparta was beroemd om zijn militaire kracht."},
+      {category:"Griekenland", nl:"Griekenland heeft de grootste wijnproductie in de wereld na Italië en Frankrijk."},
+      {category:"Griekenland", nl:"De Griekse god Zeus werd beschouwd als de oppergod."},
+      {category:"Griekenland", nl:"Het Parthenon is een van de mooiste en meest iconische tempels ter wereld."},
+      {category:"Griekenland", nl:"De Grieken ontwikkelden het theater, zoals we dat kennen, met toneelstukken van schrijvers zoals Sophocles en Euripides."},
+      {category:"Griekenland", nl:"De Grieken hebben een significant invloed gehad op de ontwikkeling van de westerse wetenschap en wiskunde."},
+      {category:"Griekenland", nl:"De eerste moderne Olympische Spelen werden in 1896 gehouden in Athene."},
+      {category:"Griekenland", nl:"Griekenland heeft meer dan 6.000 eilanden, waarvan er ongeveer 227 bewoond zijn."},
+      {category:"Griekenland", nl:"De Griekse taal is een van de oudste talen ter wereld en wordt al duizenden jaren gesproken."},
+      {category:"Griekenland", nl:"De Griekse economie is sterk afhankelijk van de toerisme-industrie."},
+      {category:"Griekenland", nl:"De Kretenzische cultuur in Griekenland was een van de vroegste geavanceerde beschavingen in Europa."},
+      {category:"Griekenland", nl:"Griekenland heeft veel natuurparken, waaronder de Vikos Gorge, die het diepste kloof in de wereld is."},
+      {category:"Griekenland", nl:"Het eiland Santorini is beroemd om zijn prachtige zonsondergangen en witgekalkte gebouwen."},
+      {category:"Griekenland", nl:"De Griekse eilanden in de Egeïsche Zee trekken jaarlijks miljoenen toeristen."},
+      {category:"Griekenland", nl:"Griekenland is de geboorteplaats van de westerse filosofie."},
+      {category:"Griekenland", nl:"De stad Thessaloniki heeft een rijke geschiedenis die teruggaat tot de tijd van Alexander de Grote."},
+      {category:"Griekenland", nl:"In Griekenland kun je het beroemde Corfiot piano-festival bezoeken."},
+      {category:"Griekenland", nl:"De Grieken stonden bekend om hun astronomische kennis en hadden de eerste gedocumenteerde sterkaart."},
+      {category:"Griekenland", nl:"Griekenland heeft een rijke geschiedenis van keramische kunst, waarvan veel oude stukken bewaard zijn gebleven."},
+      {category:"Griekenland", nl:"De stad Delphi was een belangrijk religieus centrum in de klassieke oudheid."},
+      {category:"Griekenland", nl:"Griekenland is de thuisbasis van het grootste aantal UNESCO werelderfgoederen in Europa."},
+      {category:"Griekenland", nl:"Het is een van de mooiste landen voor archeologie en de archeologische opgravingen kunnen het hele jaar door worden bezocht."},
+      {category:"Griekenland", nl:"De stad Mystras was ooit een Byzantijnse hoofdstad."},
+
+      // Duitsland - Berlijn
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft meer dan 180 musea, meer dan elke andere stad in Duitsland."},
+      {category:"Berlijn, Duitsland", nl:"Het Berlijnse Muur stond van 1961 tot 1989 tussen Oost- en West-Berlijn."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft meer dan 2.500 parken en tuinen."},
+      {category:"Berlijn, Duitsland", nl:"De beroemde Brandenburger Tor is een symbool van Duitse eenheid."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is bekend om zijn alternatieve cultuur, kunst en muziek."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft de grootste verscheidenheid aan street art in Europa."},
+      {category:"Berlijn, Duitsland", nl:"In Berlijn vind je het grootste park van Duitsland, het Tiergarten."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is een van de grootste steden in Europa qua oppervlakte."},
+      {category:"Berlijn, Duitsland", nl:"De stad was tijdens de Koude Oorlog verdeeld in twee delen: Oost- en West-Berlijn."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft een van de grootste en drukste luchthavens van Duitsland, Berlin Brandenburg Airport."},
+      {category:"Berlijn, Duitsland", nl:"De stad heeft de grootste verzameling kunst van de 20ste eeuw."},
+      {category:"Berlijn, Duitsland", nl:"De stad staat bekend om zijn moderne architectuur, variërend van de beroemde Reichstag tot de iconische Fernsehturm."},
+      {category:"Berlijn, Duitsland", nl:"In Berlijn bevindt zich het Pergamonmuseum, dat een van de grootste collecties antieke kunst ter wereld herbergt."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft een breed scala aan festivals, waaronder het Internationale Filmfestival van Berlijn (Berlinale)."},
+      {category:"Berlijn, Duitsland", nl:"De stad is de thuisbasis van honderden onafhankelijke clubs en muziekvenues, wat het een belangrijk centrum maakt voor elektronische muziek."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft meer dan 3.000 restaurants, waarvan velen internationaal georiënteerd zijn."},
+      {category:"Berlijn, Duitsland", nl:"De stad herbergt de beroemde Berliner Dom, de grootste kathedraal van de stad."},
+      {category:"Berlijn, Duitsland", nl:"Het historische Schönefeld station, nu deel van de luchthaven, was vroeger een belangrijke grensovergang tijdens de Koude Oorlog."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is beroemd om zijn gevarieerde en unieke nachtleven."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is een stad van innovatieve startups, vooral op het gebied van technologie en duurzaamheid."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is de thuisbasis van veel universiteiten en wordt vaak beschouwd als een van de grootste kennis- en onderwijscentra van Europa."},
+      {category:"Berlijn, Duitsland", nl:"In Berlijn bevinden zich vele herdenkingsmonumenten, zoals het Holocaust-monument, die de stad helpen herinneren aan haar roerige geschiedenis."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft ook een rijke muziektraditie, waaronder beroemde orkesten zoals de Berliner Philharmoniker."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is de thuisbasis van de beroemde East Side Gallery, het langste nog bestaande stuk van de Berlijnse Muur, versierd met kunstwerken."},
+      {category:"Berlijn, Duitsland", nl:"De stad heeft het hoogste aantal fietspaden van elke stad in Duitsland."},
+      {category:"Berlijn, Duitsland", nl:"De Brandenburger Tor is een van de meest herkenbare symbolen van Duitsland."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn heeft meerdere markten, vooral in de winter, zoals de beroemde kerstmarkten."},
+      {category:"Berlijn, Duitsland", nl:"Berlijn is ook een van de groenste hoofdsteden van Europa."}
     ];
 
-    const facts = {};
-    baseFacts.forEach(f => {
-      if(!facts[f.category]) facts[f.category] = [];
-      facts[f.category].push(f.nl);
-    });
-
-    function loadCategories() {
-      categoryFilter.innerHTML = '<option value="All">Alle Landen</option>';
-      Object.keys(facts).forEach(cat => {
-        const option = document.createElement("option");
-        option.value = cat;
-        option.textContent = cat;
-        categoryFilter.appendChild(option);
-      });
-    }
-
-    function getRandomFact() {
-      let chosenCategory = categoryFilter.value;
-      const keys = Object.keys(facts);
-      if(chosenCategory === "All") chosenCategory = keys[Math.floor(Math.random()*keys.length)];
-      const factList = facts[chosenCategory];
-      const fact = factList[Math.floor(Math.random()*factList.length)];
-      return {category:chosenCategory, fact};
-    }
-
-    function showFacts(count) {
-      factContainer.innerHTML = "";
-      for(let i=0;i<count;i++){
-        const {category,fact} = getRandomFact();
-        const factEl = document.createElement('div');
-        factEl.className='fact';
-        factEl.innerHTML=`<span>${category}: ${fact}</span>
-                          <button title="Opslaan als favoriet">⭐</button>`;
-        factEl.querySelector("button").addEventListener("click",()=>saveFavorite(`${category}: ${fact}`));
-        factContainer.appendChild(factEl);
-      }
-    }
-
-    function setActive(button){[oneBtn,fiveBtn,anotherBtn].forEach(btn=>btn.classList.remove('active'));button.classList.add('active');}
-
-    function saveFavorite(fact){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      if(!favorites.includes(fact)){favorites.push(fact);localStorage.setItem("favorites",JSON.stringify(favorites));renderFavorites();}
-    }
-
-    function removeFavorite(fact){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      favorites=favorites.filter(f=>f!==fact);
-      localStorage.setItem("favorites",JSON.stringify(favorites));
-      renderFavorites();
-    }
-
-    function renderFavorites(){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      favoriteList.innerHTML="";
-      favorites.forEach(fact=>{
-        const favEl=document.createElement("div");
-        favEl.className="favorite";
-        favEl.innerHTML=`<span>${fact}</span><button title="Verwijderen">✖</button>`;
-        favEl.querySelector("button").addEventListener("click",()=>removeFavorite(fact));
-        favoriteList.appendChild(favEl);
-      });
-    }
-
-    function exportFavorites(){
-      let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-      if(favorites.length===0){alert("Geen favorieten om te exporteren!");return;}
-      const blob=new Blob([favorites.join("\n")],{type:"text/plain"});
-      const link=document.createElement("a");
-      link.href=URL.createObjectURL(blob);
-      link.download="favorieten.txt";
-      link.click();
-    }
-
-    oneBtn.addEventListener('click',()=>{showFacts(1);setActive(oneBtn);});
-    fiveBtn.addEventListener('click',()=>{showFacts(5);setActive(fiveBtn);});
-    anotherBtn.addEventListener('click',()=>{showFacts(1);setActive(anotherBtn);});
-    categoryFilter.addEventListener("change",()=>{showFacts(1);setActive(oneBtn);});
-    exportBtn.addEventListener("click",exportFavorites);
-    document.addEventListener('keydown',(e)=>{if(e.code==='Space'){e.preventDefault();showFacts(1);setActive(anotherBtn);}});
-
-    loadCategories();
-    renderFavorites();
-    showFacts(1);
-    setActive(oneBtn);
   </script>
 </body>
 </html>
